@@ -26,14 +26,14 @@ public class ParticipantServiceImpl implements ParticipantService {
     private final ParticipantApplicationUpdateMapper updateMapper;
 
     @Override
-    public ParticipantResponse createParticipant(CreateParticipantCommand command) {
+    public ParticipantResponse create(CreateParticipantCommand command) {
         Participant participant = mapper.toParticipant(command);
         Participant saved = repository.save(participant);
         return mapper.toParticipantResponse(saved);
     }
 
     @Override
-    public List<ParticipantResponse> getAllParticipants() {
+    public List<ParticipantResponse> getAll() {
         List<Participant> participants = repository.findAll();
         return participants.stream()
                 .map(mapper::toParticipantResponse).
@@ -41,14 +41,14 @@ public class ParticipantServiceImpl implements ParticipantService {
     }
 
     @Override
-    public ParticipantResponse getParticipantById(UUID id) {
+    public ParticipantResponse getById(UUID id) {
         Participant participant = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(id.toString()));
         return mapper.toParticipantResponse(participant);
     }
 
     @Override
-    public ParticipantResponse updateParticipant(UUID id, UpdateParticipantCommand command) {
+    public ParticipantResponse update(UUID id, UpdateParticipantCommand command) {
         Participant participant = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(id.toString()));
         updateMapper.updateFromCommand(command, participant);
@@ -57,7 +57,7 @@ public class ParticipantServiceImpl implements ParticipantService {
     }
 
     @Override
-    public void deleteParticipant(UUID id) {
+    public void delete(UUID id) {
         Participant participant = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(id.toString()));
         repository.deleteById(participant.getId());

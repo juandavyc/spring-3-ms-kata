@@ -1,4 +1,5 @@
-package com.juandavyc.participants.application.dto;
+package com.juandavyc.participants.infrastructure.rest.dto;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,10 +10,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CreateJudgeCommand {
 
+
+public class JudgeRestRequest {
+    //@NotBlank
     private String name;
+    //@Email @NotBlank
     private String email;
-    private String specialization;
 
+    private String specialization;
 }

@@ -8,10 +8,7 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface ParticipantPersistenceMapper {
 
-
     ParticipantEntity toEntity(Participant domain);
     Participant toDomain(ParticipantEntity entity);
-
-
 
 }

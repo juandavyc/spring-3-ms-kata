@@ -17,11 +17,11 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path = "/api")
+@RequestMapping(path = "/participants")
 @RequiredArgsConstructor
 public class ParticipantController {
 
-    private final ParticipantService participantService;
+    private final ParticipantService service;
     private final ParticipantWebMapper webMapper;
 
     @PostMapping
@@ -30,7 +30,7 @@ public class ParticipantController {
     ) {
 
         CreateParticipantCommand command = webMapper.toCommand(request);
-        ParticipantResponse response = participantService.createParticipant(command);
+        ParticipantResponse response = service.create(command);
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(webMapper.toResponseDto(response));
@@ -38,7 +38,7 @@ public class ParticipantController {
 
     @GetMapping
     public ResponseEntity<List<ParticipantRestResponse>> getAll() {
-        List<ParticipantResponse> response = participantService.getAllParticipants();
+        List<ParticipantResponse> response = service.getAll();
 
         List<ParticipantRestResponse> responseDto = response.stream()
                 .map(webMapper::toResponseDto)
@@ -52,7 +52,7 @@ public class ParticipantController {
     public ResponseEntity<ParticipantRestResponse> getById(
             @PathVariable UUID id
     ) {
-        ParticipantResponse response = participantService.getParticipantById(id);
+        ParticipantResponse response = service.getById(id);
 
         ParticipantRestResponse responseDto = webMapper.toResponseDto(response);
 
@@ -68,7 +68,7 @@ public class ParticipantController {
 
         UpdateParticipantCommand command = webMapper.toUpdateCommand(request);
 
-        ParticipantResponse response = participantService.updateParticipant(id, command);
+        ParticipantResponse response = service.update(id, command);
 
         return ResponseEntity.status(HttpStatus.OK)
                 .body(webMapper.toResponseDto(response));
@@ -78,7 +78,7 @@ public class ParticipantController {
     public ResponseEntity<?> delete(
             @PathVariable UUID id
     ) {
-        participantService.deleteParticipant(id);
+        service.delete(id);
         return ResponseEntity.noContent().build();
     }
 

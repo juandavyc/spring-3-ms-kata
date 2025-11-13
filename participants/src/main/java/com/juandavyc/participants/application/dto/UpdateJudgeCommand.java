@@ -9,7 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CreateJudgeCommand {
+
+public class UpdateJudgeCommand {
 
     private String name;
     private String email;

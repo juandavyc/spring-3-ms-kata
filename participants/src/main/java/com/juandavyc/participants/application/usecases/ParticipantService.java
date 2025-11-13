@@ -13,10 +13,10 @@ import java.util.UUID;
 
 public interface ParticipantService {
 
-    ParticipantResponse createParticipant(CreateParticipantCommand command);
-    List<ParticipantResponse> getAllParticipants();
-    ParticipantResponse getParticipantById(UUID id);
-    ParticipantResponse updateParticipant(UUID id, UpdateParticipantCommand command);
-    void deleteParticipant(UUID id);
+    ParticipantResponse create(CreateParticipantCommand command);
+    List<ParticipantResponse> getAll();
+    ParticipantResponse getById(UUID id);
+    ParticipantResponse update(UUID id, UpdateParticipantCommand command);
+    void delete(UUID id);
 
 }

@@ -11,7 +11,9 @@ import java.util.UUID;
 @ToString
 
 public class ParticipantResponse {
+
     private UUID id;
     private String name;
     private String email;
+
 }

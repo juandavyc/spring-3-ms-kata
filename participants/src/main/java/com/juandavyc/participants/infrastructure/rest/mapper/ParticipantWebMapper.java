@@ -10,9 +10,10 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface ParticipantWebMapper {
 
-    CreateParticipantCommand toCommand(ParticipantRestRequest requestDto);
+    CreateParticipantCommand toCommand(ParticipantRestRequest request);
 
-    UpdateParticipantCommand toUpdateCommand(ParticipantRestRequest requestDto);
+    UpdateParticipantCommand toUpdateCommand(ParticipantRestRequest request);
 
     ParticipantRestResponse toResponseDto(ParticipantResponse applicationResponse);
+
 }

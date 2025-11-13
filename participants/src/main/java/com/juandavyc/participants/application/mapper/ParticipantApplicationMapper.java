@@ -14,7 +14,6 @@ public interface ParticipantApplicationMapper {
     @Mapping(target = "updatedAt", ignore = true)
     Participant toParticipant(CreateParticipantCommand command);
 
-
     ParticipantResponse toParticipantResponse(Participant participant);
 
 }
