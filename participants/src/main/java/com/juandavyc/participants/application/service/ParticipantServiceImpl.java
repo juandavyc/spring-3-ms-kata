@@ -6,7 +6,6 @@ import com.juandavyc.participants.application.dto.UpdateParticipantCommand;
 import com.juandavyc.participants.application.mapper.ParticipantApplicationMapper;
 import com.juandavyc.participants.application.mapper.ParticipantApplicationUpdateMapper;
 import com.juandavyc.participants.application.usecases.ParticipantService;
-import com.juandavyc.participants.domain.model.Judge;
 import com.juandavyc.participants.domain.model.Participant;
 import com.juandavyc.participants.domain.port.ParticipantRepositoryPort;
 import jakarta.persistence.EntityNotFoundException;

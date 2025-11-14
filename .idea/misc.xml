@@ -7,6 +7,9 @@
         <option value="$PROJECT_DIR$/participants/pom.xml" />
         <option value="$PROJECT_DIR$/configserver/pom.xml" />
         <option value="$PROJECT_DIR$/eurekaserver/pom.xml" />
+        <option value="$PROJECT_DIR$/evaluations/pom.xml" />
+        <option value="$PROJECT_DIR$/judges/pom.xml" />
+        <option value="$PROJECT_DIR$/ranking/pom.xml" />
       </list>
     </option>
   </component>

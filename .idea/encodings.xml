@@ -3,6 +3,9 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/configserver/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/eurekaserver/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/evaluations/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/judges/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/participants/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ranking/src/main/java" charset="UTF-8" />
   </component>
 </project>

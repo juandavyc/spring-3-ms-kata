@@ -9,7 +9,7 @@ spring:
     config:
       server:
         git:
-          uri: "git@github.com:juandavyc/spring-boot-3-ms-faketemu.git"
+          uri: https://github.com/juandavyc/spring-3-ms-kata.git
           default-label: configs
           clone-on-start: true
           ignore-local-ssh-settings: false

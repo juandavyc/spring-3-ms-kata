@@ -1,0 +1,33 @@
+
+spring:
+  application:
+    name: ranking
+  config:
+    import: ${SPRING_CONFIG_IMPORT:optional:configserver:http://localhost:8080}
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/katadb?currentSchema=evaluations
+    username: admin
+    password: admin123
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    #hibernate:
+    #  ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8084
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: "${EUREKA_CLIENT_SERVICEURL_DEFAULT_ZONE:http://localhost:8070/eureka/}"

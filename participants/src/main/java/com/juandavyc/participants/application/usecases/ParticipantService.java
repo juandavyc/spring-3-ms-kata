@@ -4,7 +4,6 @@ package com.juandavyc.participants.application.usecases;
 import com.juandavyc.participants.application.dto.CreateParticipantCommand;
 import com.juandavyc.participants.application.dto.ParticipantResponse;
 import com.juandavyc.participants.application.dto.UpdateParticipantCommand;
-import com.juandavyc.participants.domain.model.Judge;
 import com.juandavyc.participants.domain.model.Participant;
 import org.springframework.stereotype.Service;
 
