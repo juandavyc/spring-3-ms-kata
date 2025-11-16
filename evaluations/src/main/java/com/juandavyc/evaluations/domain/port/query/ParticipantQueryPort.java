@@ -1,6 +1,6 @@
-package com.juandavyc.evaluations.domain.port.feign.query;
+package com.juandavyc.evaluations.domain.port.query;
 
-import com.juandavyc.evaluations.domain.model.feign.Participant;
+import com.juandavyc.evaluations.domain.model.Participant;
 
 import java.util.UUID;
 

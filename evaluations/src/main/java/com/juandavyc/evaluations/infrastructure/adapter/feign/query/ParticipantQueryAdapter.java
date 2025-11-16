@@ -1,7 +1,7 @@
 package com.juandavyc.evaluations.infrastructure.adapter.feign.query;
 
-import com.juandavyc.evaluations.domain.model.feign.Participant;
-import com.juandavyc.evaluations.domain.port.feign.query.ParticipantQueryPort;
+import com.juandavyc.evaluations.domain.model.Participant;
+import com.juandavyc.evaluations.domain.port.query.ParticipantQueryPort;
 import com.juandavyc.evaluations.infrastructure.feign.ParticipantFeignClient;
 import com.juandavyc.evaluations.infrastructure.feign.dto.ParticipantRestResponse;
 import com.juandavyc.evaluations.infrastructure.feign.mapper.ParticipantWebMapper;

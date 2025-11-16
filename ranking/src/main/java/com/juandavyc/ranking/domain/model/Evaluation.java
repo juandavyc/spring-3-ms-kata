@@ -1,11 +1,10 @@
-package com.juandavyc.evaluations.domain.model;
+package com.juandavyc.ranking.domain.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Evaluation {
-
     private UUID id;
     private UUID participantId;
     private UUID judgeId;
@@ -18,7 +17,7 @@ public class Evaluation {
     private LocalDateTime evaluationDate;
     private String notes;
 
-    public Evaluation(UUID id, UUID participantId, UUID judgeId, BigDecimal profileScore, BigDecimal communicationScore, BigDecimal technicalScore, BigDecimal extraPoints, BigDecimal totalScore, Boolean approved, String notes) {
+    public Evaluation(UUID id, UUID participantId, UUID judgeId, BigDecimal profileScore, BigDecimal communicationScore, BigDecimal technicalScore, BigDecimal extraPoints, BigDecimal totalScore, Boolean approved, LocalDateTime evaluationDate, String notes) {
         this.id = id;
         this.participantId = participantId;
         this.judgeId = judgeId;
@@ -28,50 +27,12 @@ public class Evaluation {
         this.extraPoints = extraPoints;
         this.totalScore = totalScore;
         this.approved = approved;
-        // this.evaluationDate =  LocalDateTime.now();
+        this.evaluationDate = evaluationDate;
         this.notes = notes;
-
     }
 
     public Evaluation() {
     }
-
-    public void evaluate() {
-        validateScores(
-                profileScore,
-                communicationScore,
-                technicalScore,
-                extraPoints
-        );
-       evaluationDate = LocalDateTime.now();
-       calculateTotalScore();
-       determineApproval();
-
-    }
-
-    private void validateScores(BigDecimal... scores) {
-        for (BigDecimal score : scores) {
-            if (score == null ||
-                    score.compareTo(BigDecimal.ZERO) < 0 ||
-                    score.compareTo(new BigDecimal("100")) > 0
-            ) {
-                throw new IllegalArgumentException("Scores must be between 0 and 100");
-            }
-        }
-    }
-
-    private void calculateTotalScore() {
-        this.totalScore = profileScore
-                .add(communicationScore)
-                .add(technicalScore)
-                .add(extraPoints);
-    }
-
-
-    private void determineApproval() {
-        this.approved = totalScore.compareTo(new BigDecimal("75.0")) >= 0;
-    }
-
 
     public String getNotes() {
         return notes;

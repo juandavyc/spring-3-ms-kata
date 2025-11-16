@@ -13,7 +13,7 @@ public interface RankingService {
 
     ParticipantRankingResponse updateParticipantRanking(UUID participantId, ParticipantRankingResponse update);
 
-    RankingSnapshotResponse createSnapshot(CreateSnapshotCommand command);
+    RankingSnapshotResponse createSnapshot();
 
     List<RankingSnapshotResponse> getAllSnapshots();
 

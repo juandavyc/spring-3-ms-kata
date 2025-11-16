@@ -17,7 +17,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path = "/participants")
+@RequestMapping("/participants")
 @RequiredArgsConstructor
 public class ParticipantController {
 

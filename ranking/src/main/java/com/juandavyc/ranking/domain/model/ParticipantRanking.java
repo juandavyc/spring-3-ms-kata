@@ -1,6 +1,7 @@
 package com.juandavyc.ranking.domain.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -34,6 +35,18 @@ public class ParticipantRanking {
     public ParticipantRanking() {
     }
 
+   public void addEvaluation(Evaluation evaluation) {
+       this.totalEvaluations++;
+       this.finalScore = calculateNewAverage(evaluation.getTotalScore());
+       this.approved = this.finalScore.compareTo(new BigDecimal("75")) >= 0;
+       this.lastUpdated = LocalDateTime.now();
+   }
+
+   private BigDecimal calculateNewAverage(BigDecimal newScore) {
+       BigDecimal currentTotal = this.finalScore.multiply(BigDecimal.valueOf(this.totalEvaluations - 1));
+       BigDecimal newTotal = currentTotal.add(newScore);
+       return newTotal.divide(BigDecimal.valueOf(this.totalEvaluations), 2, RoundingMode.HALF_UP);
+   }
 
     public UUID getParticipantId() {
         return participantId;

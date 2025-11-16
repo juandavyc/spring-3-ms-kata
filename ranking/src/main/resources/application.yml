@@ -6,7 +6,7 @@ spring:
     import: ${SPRING_CONFIG_IMPORT:optional:configserver:http://localhost:8080}
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/katadb?currentSchema=evaluations
+    url: jdbc:postgresql://localhost:5432/katadb?currentSchema=ranking
     username: admin
     password: admin123
     driver-class-name: org.postgresql.Driver

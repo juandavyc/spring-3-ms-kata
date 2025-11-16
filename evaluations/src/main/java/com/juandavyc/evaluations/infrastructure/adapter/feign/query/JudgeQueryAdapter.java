@@ -1,7 +1,7 @@
 package com.juandavyc.evaluations.infrastructure.adapter.feign.query;
 
-import com.juandavyc.evaluations.domain.model.feign.Judge;
-import com.juandavyc.evaluations.domain.port.feign.query.JudgeQueryPort;
+import com.juandavyc.evaluations.domain.model.Judge;
+import com.juandavyc.evaluations.domain.port.query.JudgeQueryPort;
 import com.juandavyc.evaluations.infrastructure.feign.JudgeFeignClient;
 import com.juandavyc.evaluations.infrastructure.feign.dto.JudgeRestResponse;
 import com.juandavyc.evaluations.infrastructure.feign.mapper.JudgeWebMapper;

@@ -3,13 +3,6 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="eurekaserver" />
-        <module name="configserver" />
-      </profile>
       <profile name="Annotation profile for ranking" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -21,7 +14,15 @@
         </processorPath>
         <module name="ranking" />
       </profile>
-      <profile name="Annotation profile for evaluations" enabled="true">
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="eurekaserver" />
+        <module name="gatewayserver" />
+        <module name="configserver" />
+      </profile>
+      <profile name="Annotation profile for participants" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -31,8 +32,8 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.6.3/mapstruct-1.6.3.jar" />
         </processorPath>
         <module name="judges" />
-        <module name="evaluations" />
         <module name="participants" />
+        <module name="evaluations" />
       </profile>
     </annotationProcessing>
   </component>
@@ -41,6 +42,7 @@
       <module name="configserver" options="-parameters" />
       <module name="eurekaserver" options="-parameters" />
       <module name="evaluations" options="-parameters" />
+      <module name="gatewayserver" options="-parameters" />
       <module name="judges" options="-parameters" />
       <module name="participants" options="-parameters" />
       <module name="ranking" options="-parameters" />

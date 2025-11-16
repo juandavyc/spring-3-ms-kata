@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="886498f0-4f15-4132-bad3-aff194f31dba" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/dto/EvaluationCommand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/mapper/EvaluationApplicationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/service/EvaluationProcessorImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/usecases/EvaluationUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/domain/model/Evaluation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/kafka/consumer/EvaluationCreatedConsumer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/kafka/dto/EvaluationEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/kafka/mapper/EvaluationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/rest/dto/RankingSnapshotRestRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/application/service/EvaluationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/application/service/EvaluationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/Evaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/Evaluation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/feign/Judge.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/Judge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/feign/Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/Participant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/port/feign/query/JudgeQueryPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/port/query/JudgeQueryPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/port/feign/query/ParticipantQueryPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/port/query/ParticipantQueryPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/adapter/feign/query/JudgeQueryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/adapter/feign/query/JudgeQueryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/adapter/feign/query/ParticipantQueryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/adapter/feign/query/ParticipantQueryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/feign/mapper/JudgeWebMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/feign/mapper/JudgeWebMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/feign/mapper/ParticipantWebMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/feign/mapper/ParticipantWebMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/infrastructure/rest/controller/JudgeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/infrastructure/rest/controller/JudgeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/rest/controller/ParticipantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/rest/controller/ParticipantController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/consumer/EvaluationCreatedConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/service/RankingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/service/RankingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/usecases/RankingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/usecases/RankingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/domain/model/ParticipantRanking.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/domain/model/ParticipantRanking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/domain/model/kafka/Evaluation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/domain/service/EvaluationProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/adapter/EvaluationProcessorAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/adapter/entity/RankingSnapshotEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/adapter/entity/RankingSnapshotEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/config/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/kafka/config/KafkaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/rest/controller/RankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/rest/controller/RankingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/resources/application.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="35ZVy9oxVS0A8kXAFATAuUyR6FT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "Database connection parameters found",
+    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.ConfigserverApplication.executor": "Run",
+    "Spring Boot.EurekaserverApplication.executor": "Run",
+    "Spring Boot.EvaluationsApplication.executor": "Run",
+    "Spring Boot.GatewayserverApplication.executor": "Run",
+    "Spring Boot.JudgesApplication.executor": "Run",
+    "Spring Boot.ParticipantsApplication.executor": "Run",
+    "Spring Boot.RankingApplication.executor": "Run",
+    "git-widget-placeholder": "dev",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.RankingApplication">
+    <configuration name="ConfigserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="configserver" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.juandavyc.configserver.ConfigserverApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="eurekaserver" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.juandavyc.eurekaserver.EurekaserverApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EvaluationsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="evaluations" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.juandavyc.evaluations.EvaluationsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="gatewayserver" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.juandavyc.gatewayserver.GatewayserverApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JudgesApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="judges" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.juandavyc.judges.JudgesApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ParticipantsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="participants" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.juandavyc.participants.ParticipantsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RankingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ranking" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.juandavyc.ranking.RankingApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.ConfigserverApplication" />
+      <item itemvalue="Spring Boot.EurekaserverApplication" />
+      <item itemvalue="Spring Boot.EvaluationsApplication" />
+      <item itemvalue="Spring Boot.JudgesApplication" />
+      <item itemvalue="Spring Boot.ParticipantsApplication" />
+      <item itemvalue="Spring Boot.RankingApplication" />
+      <item itemvalue="Spring Boot.GatewayserverApplication" />
+    </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26927.53" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.26927.53" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="StructureViewState">
+    <option name="selectedTab" value="Logical" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="886498f0-4f15-4132-bad3-aff194f31dba" name="Changes" comment="" />
+      <created>1763317834800</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1763317834800</updated>
+      <workItem from="1763317837947" duration="219000" />
+      <workItem from="1763318090687" duration="5833000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -16,7 +16,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path = "/rankings")
+@RequestMapping("/rankings")
 @RequiredArgsConstructor
 public class RankingController {
 
@@ -34,15 +34,19 @@ public class RankingController {
     }
 
     @GetMapping("/participant/{id}")
-    public ResponseEntity<ParticipantRankingRestResponse> getByParticipant(@PathVariable UUID id) {
+    public ResponseEntity<ParticipantRankingRestResponse> getByParticipant(
+            @PathVariable UUID id
+    ) {
         ParticipantRankingResponse response = service.getParticipantRanking(id);
         return ResponseEntity
                 .ok(participantMapper.toRest(response));
     }
 
     @PostMapping("/snapshot")
-    public ResponseEntity<RankingSnapshotRestResponse> createSnapshot(@RequestBody CreateSnapshotCommand command) {
-        RankingSnapshotResponse response = service.createSnapshot(command);
+    public ResponseEntity<RankingSnapshotRestResponse> createSnapshot(
+           // @RequestBody CreateSnapshotCommand command
+    ) {
+        RankingSnapshotResponse response = service.createSnapshot();
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(snapshotMapper.toRest(response));

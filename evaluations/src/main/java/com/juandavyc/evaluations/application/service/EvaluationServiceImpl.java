@@ -9,15 +9,14 @@ import com.juandavyc.evaluations.application.mapper.EvaluationApplicationUpdateM
 import com.juandavyc.evaluations.application.usecases.EvaluationUseCase;
 import com.juandavyc.evaluations.domain.model.Evaluation;
 import com.juandavyc.evaluations.domain.port.event.EvaluationEventPublisherPort;
-import com.juandavyc.evaluations.domain.port.feign.query.JudgeQueryPort;
-import com.juandavyc.evaluations.domain.port.feign.query.ParticipantQueryPort;
+import com.juandavyc.evaluations.domain.port.query.JudgeQueryPort;
+import com.juandavyc.evaluations.domain.port.query.ParticipantQueryPort;
 import com.juandavyc.evaluations.domain.port.service.EvaluationServicePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -38,7 +37,6 @@ public class EvaluationServiceImpl implements EvaluationUseCase {
     // kafka event
     private final EvaluationEventPublisherPort eventPublisherPort;
 
-
     @Override
     public EvaluationResponse createEvaluation(CreateEvaluationCommand command) {
 
@@ -52,21 +50,12 @@ public class EvaluationServiceImpl implements EvaluationUseCase {
 
         Evaluation evaluation = mapper.toEvaluation(command);
 
-        // calcular el total
-        BigDecimal totalScore = command.profileScore()
-                .add(command.communicationScore())
-                .add(command.technicalScore())
-                .add(command.extraPoints());
-
-        boolean approved = totalScore.compareTo(new BigDecimal("75.0")) >= 0;
-
-        evaluation.setTotalScore(totalScore);
-        evaluation.setApproved(approved);
-        evaluation.setEvaluationDate(LocalDateTime.now());
+        evaluation.evaluate();
 
         Evaluation saved = repositoryPort.save(evaluation);
 
         eventPublisherPort.publishEvaluationCreated(saved);
+
         return mapper.toEvaluationResponse(saved);
     }
 

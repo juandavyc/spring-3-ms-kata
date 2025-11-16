@@ -1,4 +1,4 @@
-package com.juandavyc.evaluations.domain.model.feign;
+package com.juandavyc.evaluations.domain.model;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

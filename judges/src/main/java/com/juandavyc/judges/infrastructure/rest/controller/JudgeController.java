@@ -15,7 +15,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(path = "/judges")
+@RequestMapping("/judges")
 @RequiredArgsConstructor
 public class JudgeController {
 

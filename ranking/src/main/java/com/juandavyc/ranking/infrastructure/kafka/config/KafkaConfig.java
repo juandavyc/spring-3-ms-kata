@@ -1,6 +1,6 @@
-package com.juandavyc.ranking.infrastructure.config;
+package com.juandavyc.ranking.infrastructure.kafka.config;
 
-import com.juandavyc.ranking.domain.model.kafka.Evaluation;
+import com.juandavyc.ranking.infrastructure.kafka.dto.EvaluationEvent;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,14 +15,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-
 public class KafkaConfig {
 
     //@Value("${spring.kafka.bootstrap-servers}")
     //private String bootstrapServers;
 
     @Bean
-    public ConsumerFactory<String, Evaluation> consumerFactory() {
+    public ConsumerFactory<String, EvaluationEvent> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9094");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "ranking-ms");
@@ -34,12 +33,12 @@ public class KafkaConfig {
         return new DefaultKafkaConsumerFactory<>(
                 props,
                 new StringDeserializer(),
-                new JsonDeserializer<>(Evaluation.class)
+                new JsonDeserializer<>(EvaluationEvent.class)
         );
     }
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Evaluation> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, Evaluation> factory =
+    public ConcurrentKafkaListenerContainerFactory<String, EvaluationEvent> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, EvaluationEvent> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
