@@ -22,6 +22,7 @@ public class RankingServiceImpl implements RankingService {
 
     private final ParticipantRankingRepositoryPort participantRepo;
     private final RankingSnapshotRepositoryPort snapshotRepo;
+
     private final ParticipantRankingApplicationMapper participantMapper;
     private final RankingSnapshotApplicationMapper snapshotMapper;
 
@@ -74,4 +75,6 @@ public class RankingServiceImpl implements RankingService {
         RankingSnapshot s = snapshotRepo.findById(id).orElseThrow(() -> new EntityNotFoundException(id.toString()));
         return snapshotMapper.toResponse(s);
     }
+
+
 }

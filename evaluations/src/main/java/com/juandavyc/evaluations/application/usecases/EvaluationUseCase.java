@@ -7,7 +7,7 @@ import com.juandavyc.evaluations.application.dto.UpdateEvaluationCommand;
 import java.util.List;
 import java.util.UUID;
 
-public interface EvaluationService {
+public interface EvaluationUseCase {
 
     EvaluationResponse createEvaluation(CreateEvaluationCommand command);
 

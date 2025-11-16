@@ -12,6 +12,8 @@ public interface JudgeRepositoryPort {
 
     Optional<Judge> findById(UUID id);
 
+    boolean existsById(UUID id);
+
     List<Judge> findAll();
 
     void deleteById(UUID id);

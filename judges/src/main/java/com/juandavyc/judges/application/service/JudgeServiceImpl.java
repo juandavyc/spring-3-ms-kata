@@ -20,20 +20,20 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class JudgeServiceImpl implements JudgeService {
 
-    private final JudgeRepositoryPort repository;
+    private final JudgeRepositoryPort repositoryPort;
     private final JudgeApplicationMapper mapper;
     private final JudgeApplicationUpdateMapper updateMapper;
 
     @Override
     public JudgeResponse create(CreateJudgeCommand command) {
         Judge judge = mapper.toJudge(command);
-        Judge saved = repository.save(judge);
+        Judge saved = repositoryPort.save(judge);
         return mapper.toJudgeResponse(saved);
     }
 
     @Override
     public List<JudgeResponse> getALl() {
-        List<Judge> judges = repository.findAll();
+        List<Judge> judges = repositoryPort.findAll();
         return judges.stream()
                 .map(mapper::toJudgeResponse)
                 .collect(Collectors.toList());
@@ -41,25 +41,30 @@ public class JudgeServiceImpl implements JudgeService {
 
     @Override
     public JudgeResponse getById(UUID id) {
-        Judge judge = repository.findById(id)
+        Judge judge = repositoryPort.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(id.toString()));
         return mapper.toJudgeResponse(judge);
     }
 
     @Override
+    public boolean existsById(UUID id) {
+        return repositoryPort.existsById(id);
+    }
+
+    @Override
     public JudgeResponse update(UUID id, UpdateJudgeCommand command) {
-        Judge judge = repository.findById(id)
+        Judge judge = repositoryPort.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(id.toString()));
         updateMapper.updateFromCommand(command, judge);
-        Judge saved = repository.save(judge);
+        Judge saved = repositoryPort.save(judge);
         return mapper.toJudgeResponse(saved);
     }
 
     @Override
     public void delete(UUID id) {
-        Judge judge = repository.findById(id)
+        Judge judge = repositoryPort.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(id.toString()));
-        repository.deleteById(judge.getId());
+        repositoryPort.deleteById(judge.getId());
 
     }
 }

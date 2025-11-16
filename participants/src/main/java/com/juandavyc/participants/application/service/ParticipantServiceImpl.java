@@ -47,6 +47,11 @@ public class ParticipantServiceImpl implements ParticipantService {
     }
 
     @Override
+    public boolean existsById(UUID id) {
+        return repository.existsById(id);
+    }
+
+    @Override
     public ParticipantResponse update(UUID id, UpdateParticipantCommand command) {
         Participant participant = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(id.toString()));

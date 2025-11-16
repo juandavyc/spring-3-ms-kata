@@ -30,32 +30,65 @@ public class ParticipantRanking {
         this.lastUpdated = lastUpdated;
     }
 
+
+    public ParticipantRanking() {
+    }
+
+
     public UUID getParticipantId() {
         return participantId;
+    }
+
+    public void setParticipantId(UUID participantId) {
+        this.participantId = participantId;
     }
 
     public String getParticipantName() {
         return participantName;
     }
 
+    public void setParticipantName(String participantName) {
+        this.participantName = participantName;
+    }
+
     public int getTotalEvaluations() {
         return totalEvaluations;
+    }
+
+    public void setTotalEvaluations(int totalEvaluations) {
+        this.totalEvaluations = totalEvaluations;
     }
 
     public BigDecimal getFinalScore() {
         return finalScore;
     }
 
+    public void setFinalScore(BigDecimal finalScore) {
+        this.finalScore = finalScore;
+    }
+
     public boolean isApproved() {
         return approved;
+    }
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
     }
 
     public Integer getRankPosition() {
         return rankPosition;
     }
 
+    public void setRankPosition(Integer rankPosition) {
+        this.rankPosition = rankPosition;
+    }
+
     public LocalDateTime getLastUpdated() {
         return lastUpdated;
+    }
+
+    public void setLastUpdated(LocalDateTime lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
 
     // Domain behaviors

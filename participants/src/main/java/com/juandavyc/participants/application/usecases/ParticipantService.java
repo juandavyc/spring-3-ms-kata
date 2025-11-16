@@ -15,6 +15,7 @@ public interface ParticipantService {
     ParticipantResponse create(CreateParticipantCommand command);
     List<ParticipantResponse> getAll();
     ParticipantResponse getById(UUID id);
+    boolean existsById(UUID id);
     ParticipantResponse update(UUID id, UpdateParticipantCommand command);
     void delete(UUID id);
 

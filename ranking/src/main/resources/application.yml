@@ -19,6 +19,16 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  kafka:
+    consumer:
+      group-id: ranking-ms
+      bootstrap-servers: localhost:9094
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.juandavyc.ranking.domain.model.kafka"
+        spring.json.use.type.headers: false
+
 
 server:
   port: 8084

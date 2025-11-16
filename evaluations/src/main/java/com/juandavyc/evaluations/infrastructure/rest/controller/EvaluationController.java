@@ -3,7 +3,7 @@ package com.juandavyc.evaluations.infrastructure.rest.controller;
 import com.juandavyc.evaluations.application.dto.CreateEvaluationCommand;
 import com.juandavyc.evaluations.application.dto.EvaluationResponse;
 import com.juandavyc.evaluations.application.dto.UpdateEvaluationCommand;
-import com.juandavyc.evaluations.application.usecases.EvaluationService;
+import com.juandavyc.evaluations.application.usecases.EvaluationUseCase;
 import com.juandavyc.evaluations.infrastructure.rest.dto.EvaluationRestRequest;
 import com.juandavyc.evaluations.infrastructure.rest.dto.EvaluationRestResponse;
 import com.juandavyc.evaluations.infrastructure.rest.mapper.EvaluationWebMapper;
@@ -17,25 +17,21 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/evaluations")
+@RequestMapping("/evaluations")
 @RequiredArgsConstructor
 public class EvaluationController {
 
-    private final EvaluationService evaluationService;
+    private final EvaluationUseCase evaluationService;
     private final EvaluationWebMapper webMapper;
 
     @PostMapping
-    public ResponseEntity<EvaluationRestResponse> createEvaluation(@RequestBody EvaluationRestRequest request) {
+    public ResponseEntity<EvaluationRestResponse> createEvaluation(
+            @RequestBody EvaluationRestRequest request
+    ) {
         CreateEvaluationCommand command = webMapper.toCreateCommand(request);
         EvaluationResponse response = evaluationService.createEvaluation(command);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(webMapper.toRestResponse(response));
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<EvaluationRestResponse> getEvaluationById(@PathVariable UUID id) {
-        EvaluationResponse response = evaluationService.getEvaluationById(id);
-        return ResponseEntity.ok(webMapper.toRestResponse(response));
     }
 
     @GetMapping
@@ -46,6 +42,15 @@ public class EvaluationController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(restResponses);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<EvaluationRestResponse> getEvaluationById(
+            @PathVariable UUID id
+    ) {
+        EvaluationResponse response = evaluationService.getEvaluationById(id);
+        return ResponseEntity.ok(webMapper.toRestResponse(response));
+    }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<EvaluationRestResponse> updateEvaluation(

@@ -34,6 +34,11 @@ public class ParticipantRepositoryAdapter implements ParticipantRepositoryPort {
     }
 
     @Override
+    public boolean existsById(UUID id) {
+        return jpaRepository.existsById(id);
+    }
+
+    @Override
     public List<Participant> findAll() {
         List<ParticipantEntity> entities = jpaRepository.findAll();
         return entities.stream()

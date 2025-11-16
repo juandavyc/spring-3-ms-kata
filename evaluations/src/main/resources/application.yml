@@ -1,9 +1,10 @@
-
 spring:
   application:
     name: evaluations
+  profiles:
+    active: default
   config:
-    import: ${SPRING_CONFIG_IMPORT:optional:configserver:http://localhost:8080}
+    import: "optional:configserver:http://localhost:8080"
 
   datasource:
     url: jdbc:postgresql://localhost:5432/katadb?currentSchema=evaluations
@@ -19,6 +20,21 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  cloud:
+    openfeign:
+      client:
+        config:
+          product-service:
+            url: ${PRODUCT_SERVICE_URL:http://localhost:8082}
+            connectTimeout: 2000
+            readTimeout: 5000
+  kafka:
+    bootstrap-servers: localhost:9094
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    properties:
+      spring.json.add.type.headers: false
 
 server:
   port: 8083

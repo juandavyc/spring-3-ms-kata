@@ -60,6 +60,13 @@ public class ParticipantController {
                 .body(responseDto);
     }
 
+    @GetMapping("/{id}/exists")
+    public ResponseEntity<Boolean> exists(@PathVariable UUID id) {
+        boolean exists =  service.existsById(id);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(exists);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<ParticipantRestResponse> update(
             @PathVariable UUID id,
@@ -81,6 +88,8 @@ public class ParticipantController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+
 
 
 }

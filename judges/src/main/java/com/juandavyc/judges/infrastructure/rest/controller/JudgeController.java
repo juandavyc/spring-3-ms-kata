@@ -56,6 +56,14 @@ public class JudgeController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(responseDto);
     }
+    @GetMapping("/{id}/exists")
+    public ResponseEntity<Boolean> existsById(
+            @PathVariable UUID id
+    ) {
+        boolean exists = service.existsById(id);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(exists);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<JudgeRestResponse> update(

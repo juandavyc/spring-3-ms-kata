@@ -13,6 +13,8 @@ public interface ParticipantRepositoryPort {
 
     Optional<Participant> findById(UUID id);
 
+    boolean existsById(UUID id);
+
     List<Participant> findAll();
 
     void deleteById(UUID id);

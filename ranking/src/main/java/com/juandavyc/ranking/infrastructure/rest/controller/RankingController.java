@@ -27,20 +27,25 @@ public class RankingController {
     @GetMapping
     public ResponseEntity<List<ParticipantRankingRestResponse>> getAll() {
         List<ParticipantRankingResponse> response = service.listAllParticipantRankings();
-        List<ParticipantRankingRestResponse> dto = response.stream().map(participantMapper::toRest).collect(Collectors.toList());
+        List<ParticipantRankingRestResponse> dto = response.stream()
+                .map(participantMapper::toRest)
+                .collect(Collectors.toList());
         return ResponseEntity.ok(dto);
     }
 
     @GetMapping("/participant/{id}")
     public ResponseEntity<ParticipantRankingRestResponse> getByParticipant(@PathVariable UUID id) {
         ParticipantRankingResponse response = service.getParticipantRanking(id);
-        return ResponseEntity.ok(participantMapper.toRest(response));
+        return ResponseEntity
+                .ok(participantMapper.toRest(response));
     }
 
     @PostMapping("/snapshot")
     public ResponseEntity<RankingSnapshotRestResponse> createSnapshot(@RequestBody CreateSnapshotCommand command) {
         RankingSnapshotResponse response = service.createSnapshot(command);
-        return ResponseEntity.status(HttpStatus.CREATED).body(snapshotMapper.toRest(response));
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(snapshotMapper.toRest(response));
     }
 
 }

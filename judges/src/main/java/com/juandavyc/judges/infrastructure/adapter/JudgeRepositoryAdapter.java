@@ -34,6 +34,11 @@ public class JudgeRepositoryAdapter implements JudgeRepositoryPort {
     }
 
     @Override
+    public boolean existsById(UUID id) {
+        return jpaRepository.existsById(id);
+    }
+
+    @Override
     public List<Judge> findAll() {
         List<JudgeEntity> entities = jpaRepository.findAll();
         return entities.stream()
