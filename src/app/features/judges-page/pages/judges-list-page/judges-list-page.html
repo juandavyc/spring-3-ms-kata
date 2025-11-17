@@ -1,0 +1,61 @@
+<div class="flex flex-col gap-3">
+
+
+@let vm = store;
+
+@if (vm.isLoadingList()) {
+<p>Cargando</p>
+}
+@else {
+  <div class="flex flex-row justify-end">
+    <p-button
+    label="Create"
+    (onClick)="openDialog(null, CrudPageOption.CREATE)" />
+  </div>
+
+  <p-table [value]="vm.judges()" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template ng-template #header>
+      <tr>
+        <th>no</th>
+        <th>nombre</th>
+        <th>specialization</th>
+        <th>createdAt</th>
+        <th>options</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-judge let-i="rowIndex">
+      <tr>
+        <td>{{( i+1) }}</td>
+        <td>{{ judge.name }}</td>
+        <td>{{ judge.specialization }}</td>
+        <td>{{ judge.createdAt }}</td>
+        <td>
+          <div class="flex flex-row gap-1">
+            <a [routerLink]="[judge.id]" pButton>
+              <span>Detalles</span>
+            </a>
+            <p-button label="update" (onClick)="openDialog(judge.id, CrudPageOption.UPDATE)" />
+            <p-button label="delete" (onClick)="openDialog(judge.id, CrudPageOption.DELETE)"/>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-dialog [visible]="vm.isVisible()" [closable]="false" [modal]="true" [style]="{ width: '25rem' }">
+
+    @switch (vm.option()) {
+      @case (CrudPageOption.CREATE) {
+        <judge-create/>
+      }
+      @case (CrudPageOption.UPDATE) {
+        <judge-update/>
+      }
+      @case (CrudPageOption.DELETE) {
+        <judge-delete/>
+      }
+    }
+  </p-dialog>
+}
+<p-toast position="bottom-right"/>
+</div>

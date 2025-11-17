@@ -10,6 +10,10 @@ export const routes: Routes = [
     {
       path: 'participants',
       loadChildren: () => import('./features/participants-page/participants.routes'),
+    },
+    {
+      path: 'judges',
+      loadChildren: () => import('./features/judges-page/judges.routes'),
     }
 
 ];

@@ -1,0 +1,26 @@
+@let vm = store;
+
+<div class="flex flex-col gap-3 text-center">
+  @if (vm.isLoadingDetails()) {
+  <p>Cargando</p>
+  }
+  @else{
+    @if (vm.isDoneDetails()) {
+      <h2 class="text-xl">
+        La cuenta fue eliminada
+      </h2>
+      <div class="flex flex-row justify-center gap-3">
+        <p-button severity="info" label="Salir" (onClick)="closeDialog()" />
+      </div>
+    }
+    @else{
+      <h2 class="text-xl">
+        ¿Esta seguro de que desea eliminar?
+      </h2>
+      <div class="flex flex-row justify-end gap-3">
+        <p-button severity="danger" label="Si, eliminar" (onClick)="confirmDelete()" />
+        <p-button severity="info" label="Cancelar" (onClick)="closeDialog()" />
+      </div>
+    }
+  }
+</div>
