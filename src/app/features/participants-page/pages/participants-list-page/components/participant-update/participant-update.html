@@ -1,0 +1,29 @@
+@let vm = store;
+
+@if (vm.isLoadingDetails()) {
+  <p>Creando, espere..</p>
+}
+@if (vm.isDoneDetails()){
+  <h2 class="text-xl">Cuenta creada corectamente</h2>
+  <div class="flex flex-row justify-center gap-3">
+    <p-button severity="info" label="Salir" (onClick)="closeDialog()" />
+  </div>
+}
+@if (!vm.isLoadingDetails() && !vm.isDoneDetails()) {
+  <div [hidden]="vm.isLoadingDetails()">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="grid grid-cols-2 gap-3">
+        <div class="flex flex-col gap-2">
+          <label for="name">Username</label>
+          <input pInputText id="name" autocomplete="off" formControlName="name" />
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="email">Email</label>
+          <input pInputText id="email" autocomplete="off" formControlName="email" />
+        </div>
+        <p-button type="submit" label="Guardar"  [disabled]="form.invalid || form.pristine"/>
+        <p-button type="button" severity="success" label="Salir" (onClick)="closeDialog()" />
+      </div>
+    </form>
+  </div>
+}
