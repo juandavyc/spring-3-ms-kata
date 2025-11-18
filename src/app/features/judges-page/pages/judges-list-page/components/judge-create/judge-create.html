@@ -15,13 +15,6 @@
     <div class="flex flex-col gap-3">
       <h2 class="text-xl font-bold text-center">Añadir Juez</h2>
       <hr class="opacity-20">
-      <div class="flex flex-col gap-2">
-        <label for="name">Nombre</label>
-        <input pInputText id="name" autocomplete="off" formControlName="name" />
-      </div>
-      @if (isInvalidControl('name')) {
-        <form-error [errors]="getErrorControl('name')"/>
-      }
       <label for="specialization">Especializacion</label>
       <p-select
         [options]="specializations"
@@ -33,6 +26,14 @@
       @if (isInvalidControl('specialization')) {
         <form-error [errors]="getErrorControl('specialization')"/>
       }
+      <div class="flex flex-col gap-2">
+        <label for="name">Nombre</label>
+        <input pInputText id="name" autocomplete="off" formControlName="name" />
+      </div>
+      @if (isInvalidControl('name')) {
+        <form-error [errors]="getErrorControl('name')"/>
+      }
+
       <div class="flex flex-col gap-2">
         <label for="email">Email</label>
         <input pInputText id="email" autocomplete="off" formControlName="email" />

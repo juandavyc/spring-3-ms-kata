@@ -4,10 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ParticipantModel } from '../../../../core/models/participant.model';
 import { map } from 'rxjs';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-participants-details-page',
-  imports: [],
+  imports: [
+    JsonPipe
+  ],
   templateUrl: './participants-details-page.html',
   styleUrl: './participants-details-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

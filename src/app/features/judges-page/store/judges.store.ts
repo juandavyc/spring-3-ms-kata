@@ -96,17 +96,13 @@ export const JudgesStore = signalStore(
         switchMap((request) => store._service.updateAccount(store.id()!, request).pipe(
           tapResponse({
             next: (response) => {
-              //const account = response.data;
-              //patchState(store, { account })
-              // patchState(store, { message: { severity: 'info', summary: response.status, detail: response.message } })
-
-              //const accounts = store.accounts().map(account =>
-              //  account.id == response.data.id ? response.data : account
-              //);
-              //patchState(store, { accounts })
               patchState(store, { message: { severity: 'success', summary: 'Datos actualizados', detail: store.id()! } });
               patchState(store, { loading: { ...store.done(), details: true } });
 
+              setTimeout(() => {
+                search();
+                closeDialog();
+              }, 500);
             },
             error: (err) => {
               patchState(store, { message: { severity: 'error', summary: 'Error', detail: 'An error has occurrend' } });
@@ -135,7 +131,7 @@ export const JudgesStore = signalStore(
               // patchState(store, { account })
               //const accountId = response.data;
               const judge: JudgeModel = response;
-              patchState(store, { judges: [...store.judges(), judge] });
+              patchState(store, { judges: [judge, ...store.judges()] });
               // patchState(store, { message: { severity: 'info', summary: response.status, detail: response.message } })
               patchState(store, { message: { severity: 'success', summary: 'Creado correctamente', detail: judge.name } });
 
@@ -216,7 +212,6 @@ export const JudgesStore = signalStore(
         searchById(id);
       }
     }
-
 
     return {
       search,

@@ -7,7 +7,12 @@
 }
 @else {
 
-  <div class="flex flex-row justify-end">
+  <div class="flex flex-row justify-end gap-3">
+    <p-button
+    label="Recargar"
+    severity="info"
+    (onClick)="vm.search()" />
+
     <p-button
     label="Crear Snapshot"
     (onClick)="vm.create()"
@@ -19,17 +24,19 @@
     <ng-template ng-template #header>
       <tr>
         <th>Posición</th>
-        <th>Participante</th>
-        <th>Puntuación Total</th>
-        <th>Aprobado</th>
+        <th>Nombre</th>
+        <th>Rol</th>
+        <th>Puntaje Final</th>
+        <th>Estado</th>
       </tr>
     </ng-template>
     <ng-template #body let-ranking let-i="rowIndex">
       <tr>
         <td>{{ i+1}}</td>
-        <td>{{ ranking.participantId }}</td>
+        <td>{{ ranking.participant.name }}</td>
+        <td>{{ ranking.participant.jobRole }}</td>
         <td>{{ ranking.finalScore }}</td>
-        <td>{{ ranking.approved }}</td>
+        <td class="font-bold">{{ ranking.approved ==  true ? 'Aprobado' : 'Rechazado' }}</td>
       </tr>
     </ng-template>
   </p-table>

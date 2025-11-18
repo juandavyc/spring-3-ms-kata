@@ -21,8 +21,6 @@ export default class RankingsListPage implements OnInit {
 
   readonly CrudPageOption = CrudPageOption;
 
-
-
   ngOnInit(): void {
     this.store.search();
   }

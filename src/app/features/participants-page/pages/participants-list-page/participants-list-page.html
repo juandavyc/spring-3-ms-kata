@@ -6,7 +6,11 @@
 <p>Cargando</p>
 }
 @else {
-  <div class="flex flex-row justify-end">
+  <div class="flex flex-row justify-end gap-3">
+    <p-button
+    label="Recargar"
+    severity="info"
+    (onClick)="vm.search()" />
     <p-button
     label="Añadir nuevo participante"
     (onClick)="openDialog(null, CrudPageOption.CREATE)" />
@@ -31,12 +35,12 @@
         <td>{{ participant.jobRole }}</td>
         <td>{{ participant.createdAt }}</td>
         <td>
-          <div class="flex flex-row gap-1">
-            <a [routerLink]="[participant.id]" size="small" pButton>
+          <div class="flex flex-row gap-1 justify-end">
+            <a [routerLink]="[participant.id]" size="small" severity="info" pButton>
               <span>Detalles</span>
             </a>
-            <p-button label="actualizar" size="small" (onClick)="openDialog(participant.id, CrudPageOption.UPDATE)" />
-            <p-button label="eliminar" size="small" (onClick)="openDialog(participant.id, CrudPageOption.DELETE)"/>
+            <p-button label="actualizar" size="small"  (onClick)="openDialog(participant.id, CrudPageOption.UPDATE)" />
+            <p-button label="eliminar" size="small" severity="danger" (onClick)="openDialog(participant.id, CrudPageOption.DELETE)"/>
           </div>
         </td>
       </tr>

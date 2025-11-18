@@ -58,6 +58,7 @@ export class JudgeCreate {
   closeDialog() {
     this.store.closeDialog();
   }
+
   resetEffect = effect(() => {
     const isDone = this.store.isDoneDetails();
     if (isDone) {

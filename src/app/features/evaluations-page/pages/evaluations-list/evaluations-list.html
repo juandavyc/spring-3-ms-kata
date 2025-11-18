@@ -1,32 +1,34 @@
 <div class="flex flex-col gap-3">
   @let vm = store;
-  <!-- @if (vm.isLoadingList()) {
-  <p>Cargando</p>
-  }
-  @else { -->
-  <div class="flex flex-row justify-end">
-    <p-button label="Create" (onClick)="openDialog(null, CrudPageOption.CREATE)" />
-  </div>
+  @let judges = judges$();
 
+  <div class="flex flex-row justify-end gap-3">
+    <p-button
+    label="Recargar"
+    severity="info"
+    (onClick)="vm.searchEvaluationsParticipants()" />
+  </div>
   <p-table [value]="vm.evaluationsParticipants()" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template ng-template #header>
       <tr>
-        <th>no</th>
-        <th>participant</th>
-        <th>email</th>
-        <th>aproved</th>
-        <th>createdAt</th>
-        <th>options</th>
+        <th>No</th>
+        <th>Participante</th>
+        <th>Email</th>
+        <th>Resultado</th>
+        <th>Creado</th>
+        <th>Opciones</th>
       </tr>
     </ng-template>
     <ng-template #body let-evaluationParticipant let-i="rowIndex">
+
+      @let hasEvaluation = evaluationParticipant.evaluation != null;
       <tr>
         <td>{{( i+1) }}</td>
         <td>{{ evaluationParticipant.participant.name }}</td>
         <td>{{ evaluationParticipant.participant.email }}</td>
 
-        @if (evaluationParticipant.evaluation) {
-          <td>{{ evaluationParticipant.evaluation.approved }}</td>
+        @if (hasEvaluation) {
+          <td class="font-bold">{{ evaluationParticipant.evaluation.approved == true ? 'Aprobado' : 'Rechazado' }}</td>
           <td>{{ evaluationParticipant.evaluation.evaluationDate }}</td>
         }
         @else{
@@ -34,37 +36,36 @@
           <td>--</td>
         }
         <td>
-          <div class="flex flex-row gap-1">
-
-            @if (evaluationParticipant.evaluation) {
-              <p-button label="details"
+          <div class="flex flex-row gap-1 justify-end">
+             <p-button label="evaluar" size="small" (onClick)="openDialog(evaluationParticipant.participant.id, CrudPageOption.CREATE)" />
+            @if (hasEvaluation) {
+              <p-button label="detalles" size="small" severity="info"
                 (onClick)="openDialog(evaluationParticipant.evaluation.id, CrudPageOption.DETAILS)"
               />
-              <p-button label="delete" (onClick)="openDialog(evaluationParticipant.evaluation.id, CrudPageOption.DELETE)" />
+              <p-button label="eliminar" size="small" severity="danger" (onClick)="openDialog(evaluationParticipant.evaluation.id, CrudPageOption.DELETE)" />
             }
-            <p-button label="evaluar" (onClick)="openDialog(evaluationParticipant.participant.id, CrudPageOption.CREATE)" />
-
+            @else{
+              <p-button label="detalles" size="small" severity="info" disabled/>
+              <p-button label="eliminar" size="small" severity="danger" disabled/>
+            }
           </div>
         </td>
       </tr>
     </ng-template>
   </p-table>
 
-
-
-  <p-dialog [visible]="vm.isVisible()" [closable]="false" [modal]="true" [style]="{ width: '25rem' }">
-
+  <p-dialog [visible]="vm.isVisible()" [closable]="false" [modal]="true" [style]="{ width: '45rem' }">
      @switch (vm.option()) {
       @case (CrudPageOption.DETAILS) {
         <evaluation-details />
       }
       @case (CrudPageOption.CREATE) {
-        <evaluation-create />
+        <evaluation-create [judges]="judges!" />
       }
       @case (CrudPageOption.DELETE) {
         <evaluation-delete />
       }
     }
   </p-dialog>
-  <!-- } -->
+  <p-toast position="bottom-right"/>
 </div>

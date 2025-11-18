@@ -4,10 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { JudgeModel } from '../../../../core/models/judge.model';
 import { map } from 'rxjs';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-judges-details-page',
-  imports: [],
+  imports: [
+    JsonPipe
+  ],
   templateUrl: './judges-details-page.html',
   styleUrl: './judges-details-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

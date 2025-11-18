@@ -39,6 +39,7 @@ export class ParticipantUpdate {
       this.form.patchValue({
         name: values.name,
         email: values.email,
+        jobRole: values.jobRole,
       })
     }
   })

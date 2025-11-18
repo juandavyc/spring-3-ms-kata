@@ -1,5 +1,13 @@
 export interface RankingModel {
-  participantId: string;
-  finalScore: number;
-  approved: boolean;
+  participant: Participant;
+  finalScore:  number;
+  approved:    boolean;
+  lastUpdated: Date;
+}
+
+interface Participant {
+  id:      string;
+  name:    string;
+  jobRole: null;
+  email:   string;
 }

@@ -6,6 +6,10 @@ import { MessageService } from 'primeng/api';
 import { EvaluationDelete } from './components/evaluation-delete/evaluation-delete';
 import { EvaluationCreate } from './components/evaluation-create/evaluation-create';
 import { EvaluationDetails } from './components/evaluation-details/evaluation-details';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { JudgeModel } from '@core/models/judge.model';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-evaluations-list',
@@ -30,7 +34,15 @@ export default class EvaluationsList implements OnInit {
 
   readonly CrudPageOption = CrudPageOption;
 
+  private route = inject(ActivatedRoute);
+
+
+  judges$ = toSignal<JudgeModel[]>(
+    this.route.data.pipe(map((d) => d['data']))
+  );
+
   closeDialog() {
+
     this.store.closeDialog();
   }
 

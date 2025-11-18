@@ -15,18 +15,17 @@
   <div class="flex flex-col gap-3">
     <h2 class="text-xl font-bold text-center">Añadir</h2>
     <hr class="opacity-20">
+    <label for="specialization">Rol</label>
+    <p-select [options]="jobRoles" formControlName="jobRole" optionLabel="name" optionValue="code" placeholder="Seleccionar" class="w-full" />
+    @if (isInvalidControl('jobRole')) {
+    <form-error [errors]="getErrorControl('jobRole')" />
+    }
     <div class="flex flex-col gap-2">
       <label for="name">Nombre</label>
       <input pInputText id="name" autocomplete="off" formControlName="name" />
     </div>
     @if (isInvalidControl('name')) {
     <form-error [errors]="getErrorControl('name')" />
-    }
-    <label for="specialization">Rol</label>
-    <p-select [options]="jobRoles" formControlName="jobRole" optionLabel="name" optionValue="code" placeholder="Seleccionar" c
-      lass="w-full" />
-    @if (isInvalidControl('jobRole')) {
-    <form-error [errors]="getErrorControl('jobRole')" />
     }
     <div class="flex flex-col gap-2">
       <label for="email">Email</label>
