@@ -1,5 +1,5 @@
 import { CrudPageOption } from "@shared/ui/enums/crud-page-option.enum";
-import { JudgeModel } from "../models/judge.model";
+import { JudgeModel } from "../../../core/models/judge.model";
 import { ToastMessage } from "@shared/models/toast-message.model";
 
 export interface JudgesSlice {

@@ -1,13 +1,13 @@
 import { patchState, signalStore, withComputed, withMethods, withProps, withState } from '@ngrx/signals';
 import { initialJudgesSlice } from './judges.slice';
-import { JudgesService } from '../services/judges.service';
+import { JudgesService } from '../../../core/services/judges.service';
 import { computed, inject } from '@angular/core';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { tapResponse } from '@ngrx/operators';
 import { filter, pipe, switchMap, tap } from 'rxjs';
 import { CrudPageOption } from '@shared/ui/enums/crud-page-option.enum';
 import { JudgeRequest } from '../models/judge-request.model';
-import { JudgeModel } from '../models/judge.model';
+import { JudgeModel } from '../../../core/models/judge.model';
 
 export const JudgesStore = signalStore(
   withState(initialJudgesSlice),

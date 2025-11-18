@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { APP_CONFIG } from '@core/config/environment.token';
-import { ParticipantModel } from '../models/participant.model';
+import { JudgeModel } from '../models/judge.model';
 import { catchError, delay, Observable, throwError } from 'rxjs';
-import { ParticipantRequest } from '../models/participant-request.model';
+import { JudgeRequest } from '@features/judges-page/models/judge-request.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ParticipantsService {
+export class JudgesService {
 
   private http = inject(HttpClient);
   private appConfig = inject(APP_CONFIG);
@@ -16,20 +16,20 @@ export class ParticipantsService {
   constructor() { }
 
   private getApiUrl(): string {
-    return `${this.appConfig.API_URL}/participants`
+    return `${this.appConfig.API_URL}/judges`
       ;
   }
 
-  getParticipants(): Observable<ParticipantModel[]> {
+  getJudges(): Observable<JudgeModel[]> {
     const url = `${this.getApiUrl()}`;
-    return this.http.get<ParticipantModel[]>(url).pipe(
+    return this.http.get<JudgeModel[]>(url).pipe(
       catchError(this.handleError)
     );
   }
 
-  getParticipantById(id: string): Observable<ParticipantModel> {
+  getJudgeById(id: string): Observable<JudgeModel> {
     const url = `${this.getApiUrl()}/${id}`;
-    return this.http.get<ParticipantModel>(url).pipe(
+    return this.http.get<JudgeModel>(url).pipe(
       catchError(this.handleError)
     );
   }
@@ -41,23 +41,23 @@ export class ParticipantsService {
     );
   }
 
-  deleteParticipantById(id: string) {
+  deleteJudgeById(id: string) {
     const url = `${this.getApiUrl()}/${id}`;
     return this.http.delete(url).pipe(
       catchError(this.handleError)
     );
   }
 
-  create(request: ParticipantRequest): Observable<ParticipantModel> {
+  create(request: JudgeRequest): Observable<JudgeModel> {
     const url = `${this.getApiUrl()}`;
-    return this.http.post<ParticipantModel>(url, request).pipe(
+    return this.http.post<JudgeModel>(url, request).pipe(
       catchError(this.handleError)
     );
   }
 
-  updateAccount(id: string, request: ParticipantRequest): Observable<ParticipantModel> {
+  updateAccount(id: string, request: JudgeRequest): Observable<JudgeModel> {
     const url = `${this.getApiUrl()}/${id}`;
-    return this.http.put<ParticipantModel>(url, request).pipe(
+    return this.http.put<JudgeModel>(url, request).pipe(
       catchError(this.handleError)
     );
   }
@@ -65,7 +65,7 @@ export class ParticipantsService {
 
 
   private handleError(error: any) {
-    console.error('[ParticipantsService] error:', error);
+    console.error('[JudgesService] error:', error);
     return throwError(() => error);
   }
 

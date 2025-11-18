@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="flex flex-col gap-10 px-3">
+    <p-slider p-slider formControlName="profileScore" [min]="0" [max]="100" class="w-56"></p-slider>
+    <p-slider p-slider formControlName="communicationScore" [min]="0" [max]="100" class="w-56"></p-slider>
+    <p-slider p-slider formControlName="technicalScore" [min]="0" [max]="100" class="w-56"></p-slider>
+    <p-slider p-slider formControlName="extraPoints" [min]="0" [max]="100" class="w-56"></p-slider>
+    <textarea formControlName="notes" variant="filled" rows="5" cols="30" pTextarea></textarea>
+
+    <p-button type="submit" label="Guardar" [disabled]="form.invalid" />
+
+  </div>
+
+  <!-- <p-button type="button" severity="success" label="Salir" (onClick)="closeDialog()" /> -->
+</form>
+
+
+{{form.value | json}}

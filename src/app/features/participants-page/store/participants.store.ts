@@ -1,13 +1,13 @@
 import { patchState, signalStore, withComputed, withMethods, withProps, withState } from '@ngrx/signals';
 import { initialParticipantsSlice } from './participants.slice';
-import { ParticipantsService } from '../services/participants.service';
 import { computed, inject } from '@angular/core';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { tapResponse } from '@ngrx/operators';
 import { filter, pipe, switchMap, tap } from 'rxjs';
 import { CrudPageOption } from '@shared/ui/enums/crud-page-option.enum';
 import { ParticipantRequest } from '../models/participant-request.model';
-import { ParticipantModel } from '../models/participant.model';
+import { ParticipantModel } from '../../../core/models/participant.model';
+import { ParticipantsService } from '@core/services/participants.service';
 
 export const ParticipantsStore = signalStore(
   withState(initialParticipantsSlice),

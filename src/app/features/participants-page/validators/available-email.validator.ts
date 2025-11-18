@@ -1,6 +1,6 @@
 import { AbstractControl, AsyncValidatorFn } from '@angular/forms';
 import { catchError, map } from 'rxjs/operators';
-import { ParticipantsService } from '../services/participants.service';
+import { ParticipantsService } from '@core/services/participants.service';
 import { inject } from '@angular/core';
 import { of } from 'rxjs';
 

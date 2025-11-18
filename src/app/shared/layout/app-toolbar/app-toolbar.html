@@ -1,0 +1,14 @@
+<div class="bg-slate-300 fixed top-0 left-0 w-full z-50 flex flex-row justify-between items-center py-5 px-3 h-16">
+  <a routerLink="/">
+    <h1 class="text-2xl uppercase font-bold"> Katas</h1>
+  </a>
+  <div class="flex flex-row gap-2 items-center">
+    <div class="hidden md:block">
+      <p-menubar [model]="items" breakpoint="768px" />
+    </div>
+    <p-button label="Menu" severity="secondary" (onClick)="openDrawer()" class="md:hidden" />
+  </div>
+</div>
+<p-drawer header="Menú" [(visible)]="isVisible">
+  <p-panelmenu [model]="items" [multiple]="true" />
+</p-drawer>

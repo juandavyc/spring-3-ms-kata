@@ -1,5 +1,5 @@
 import { CrudPageOption } from "@shared/ui/enums/crud-page-option.enum";
-import { ParticipantModel } from "../models/participant.model";
+import { ParticipantModel } from "../../../core/models/participant.model";
 import { ToastMessage } from "@shared/models/toast-message.model";
 
 export interface ParticipantsSlice {

@@ -2,9 +2,13 @@ import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/cor
 import { FormBuilder, ReactiveFormsModule, Validators, FormControl } from '@angular/forms';
 import { FormError } from '@shared/components/form-error/form-error';
 import { ImportsModules } from '@shared/models/imports.module';
-import { JudgesStore } from 'src/app/features/judges-page/store/judges.store';
-import { isAvailableEmailValidator } from 'src/app/features/judges-page/validators/available-email.validator';
-import { FormValidatorService } from '@core/config/services/form-validator.service';
+import { FormValidatorService } from '@shared/utils/form-validator.service';
+import { isAvailableEmailValidator } from '@features/participants-page/validators/available-email.validator';
+import { JudgesStore } from '@features/judges-page/store/judges.store';
+import { SPECIALIZATIONS } from '@features/judges-page/data/specialization.data';
+import { SelectModel } from '@core/models/select.model';
+
+
 
 @Component({
   selector: 'judge-create',
@@ -23,6 +27,8 @@ export class JudgeCreate {
 
   readonly store = inject(JudgesStore);
   readonly formValidatorService = inject(FormValidatorService);
+  readonly specializations:SelectModel[] = [...SPECIALIZATIONS];
+
 
   readonly form = this.fb.group({
     name: this.fb.control<string>('', [Validators.required]),

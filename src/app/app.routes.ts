@@ -14,6 +14,14 @@ export const routes: Routes = [
     {
       path: 'judges',
       loadChildren: () => import('./features/judges-page/judges.routes'),
+    },
+    {
+      path: 'evaluations',
+      loadChildren: () => import('./features/evaluations-page/evaluations.routes'),
+    },
+    {
+      path: 'rankings',
+      loadChildren: () => import('./features/rankings-page/rankings.routes'),
     }
 
 ];

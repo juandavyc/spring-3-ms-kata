@@ -1,6 +1,5 @@
 <div class="flex flex-col gap-3">
 
-
 @let vm = store;
 
 @if (vm.isLoadingList()) {
@@ -9,40 +8,42 @@
 @else {
   <div class="flex flex-row justify-end">
     <p-button
-    label="Create"
+    label="añadir nuevo juez"
     (onClick)="openDialog(null, CrudPageOption.CREATE)" />
   </div>
 
   <p-table [value]="vm.judges()" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template ng-template #header>
       <tr>
-        <th>no</th>
-        <th>nombre</th>
-        <th>specialization</th>
-        <th>createdAt</th>
-        <th>options</th>
+        <th>No</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Epecializacion</th>
+        <th>Creado</th>
+        <th>Opciones</th>
       </tr>
     </ng-template>
     <ng-template #body let-judge let-i="rowIndex">
       <tr>
         <td>{{( i+1) }}</td>
         <td>{{ judge.name }}</td>
+        <td>{{ judge.email }}</td>
         <td>{{ judge.specialization }}</td>
         <td>{{ judge.createdAt }}</td>
         <td>
           <div class="flex flex-row gap-1">
-            <a [routerLink]="[judge.id]" pButton>
-              <span>Detalles</span>
+            <a [routerLink]="[judge.id]" pButton size="small">
+              <span>detalles</span>
             </a>
-            <p-button label="update" (onClick)="openDialog(judge.id, CrudPageOption.UPDATE)" />
-            <p-button label="delete" (onClick)="openDialog(judge.id, CrudPageOption.DELETE)"/>
+            <p-button label="actualizar" size="small" (onClick)="openDialog(judge.id, CrudPageOption.UPDATE)" />
+            <p-button label="eliminar" size="small" (onClick)="openDialog(judge.id, CrudPageOption.DELETE)"/>
           </div>
         </td>
       </tr>
     </ng-template>
   </p-table>
 
-  <p-dialog [visible]="vm.isVisible()" [closable]="false" [modal]="true" [style]="{ width: '25rem' }">
+  <p-dialog [visible]="vm.isVisible()" [closable]="false" [modal]="true" [style]="{ width: '55rem' }">
 
     @switch (vm.option()) {
       @case (CrudPageOption.CREATE) {

@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component, effect, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { SelectModel } from '@core/models/select.model';
+import { JOB_ROLES } from '@features/participants-page/data/job-roles.data';
+import { FormError } from '@shared/components/form-error/form-error';
 import { ImportsModules } from '@shared/models/imports.module';
+import { FormValidatorService } from '@shared/utils/form-validator.service';
 import { ParticipantRequest } from 'src/app/features/participants-page/models/participant-request.model';
 import { ParticipantsStore } from 'src/app/features/participants-page/store/participants.store';
 
@@ -9,19 +13,24 @@ import { ParticipantsStore } from 'src/app/features/participants-page/store/part
   imports: [
     ImportsModules,
     ReactiveFormsModule,
+    FormError,
   ],
   templateUrl: './participant-update.html',
   styleUrl: './participant-update.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ParticipantUpdate{
+export class ParticipantUpdate {
 
   private fb = inject(FormBuilder);
   readonly store = inject(ParticipantsStore);
+  readonly jobRoles: SelectModel[] = [...JOB_ROLES];
+  readonly formValidatorService = inject(FormValidatorService);
+
 
   form = this.fb.group({
     name: this.fb.control<string>('', [Validators.required]),
-    email: this.fb.control<string>('', [Validators.required, Validators.email])
+    email: this.fb.control<string>('', [Validators.required, Validators.email]),
+    jobRole: this.fb.control<string>('', [Validators.required]),
   })
 
   trigger = effect(() => {
@@ -40,6 +49,15 @@ export class ParticipantUpdate{
       this.form.reset();
     }
   })
+
+  public isInvalidControl(control: string) {
+    return this.formValidatorService.isInvalidControl(this.form.get(control));
+  }
+
+  public getErrorControl(control: string) {
+    return this.formValidatorService.getErrorControl(this.form.get(control));
+  }
+
   submit() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
@@ -52,7 +70,7 @@ export class ParticipantUpdate{
     this.store.update(request);
   }
 
-  closeDialog(){
+  closeDialog() {
     this.store.closeDialog();
   }
 

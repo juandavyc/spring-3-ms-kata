@@ -4,7 +4,9 @@ import { FormError } from '@shared/components/form-error/form-error';
 import { ImportsModules } from '@shared/models/imports.module';
 import { ParticipantsStore } from 'src/app/features/participants-page/store/participants.store';
 import { isAvailableEmailValidator } from 'src/app/features/participants-page/validators/available-email.validator';
-import { FormValidatorService } from '@core/config/services/form-validator.service';
+import { FormValidatorService } from '@shared/utils/form-validator.service';
+import { JOB_ROLES } from '@features/participants-page/data/job-roles.data';
+import { SelectModel } from '@core/models/select.model';
 
 @Component({
   selector: 'participant-create',
@@ -12,7 +14,7 @@ import { FormValidatorService } from '@core/config/services/form-validator.servi
     ImportsModules,
     ReactiveFormsModule,
     FormError
-],
+  ],
   templateUrl: './participant-create.html',
   styleUrl: './participant-create.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,6 +25,7 @@ export class ParticipantCreate {
 
   readonly store = inject(ParticipantsStore);
   readonly formValidatorService = inject(FormValidatorService);
+  readonly jobRoles: SelectModel[] = [...JOB_ROLES];
 
   readonly form = this.fb.group({
     name: this.fb.control<string>('', [Validators.required]),
@@ -31,14 +34,15 @@ export class ParticipantCreate {
         validators: [Validators.required, Validators.email],
         asyncValidators: [isAvailableEmailValidator()],
         updateOn: 'blur',
-      })
+      }),
+    jobRole: this.fb.control<string>('', [Validators.required]),
   })
 
-public isInvalidControl(control: string ) {
+  public isInvalidControl(control: string) {
     return this.formValidatorService.isInvalidControl(this.form.get(control));
   }
 
-  public getErrorControl(control: string ){
+  public getErrorControl(control: string) {
     return this.formValidatorService.getErrorControl(this.form.get(control));
   }
 

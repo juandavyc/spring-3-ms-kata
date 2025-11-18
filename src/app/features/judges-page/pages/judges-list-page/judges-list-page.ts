@@ -1,5 +1,5 @@
 import { CrudPageOption } from '@shared/ui/enums/crud-page-option.enum';
-import { JudgeModel } from '../../models/judge.model';
+import { JudgeModel } from '../../../../core/models/judge.model';
 import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, effect, inject, OnInit } from '@angular/core';
 import { ImportsModules } from '@shared/models/imports.module';
@@ -30,16 +30,9 @@ export default class JudgesListPage implements OnInit {
   readonly store = inject(JudgesStore);
   private readonly messageService = inject(MessageService);
 
-
   readonly CrudPageOption = CrudPageOption;
 
   //isVisible = false;
-
-
-  ngOnInit(): void {
-    this.store.search();
-  }
-
 
   closeDialog() {
     //this.isVisible = false;
@@ -56,5 +49,9 @@ export default class JudgesListPage implements OnInit {
     if (message)
       this.messageService.add({ ...message });
   })
+
+  ngOnInit(): void {
+    this.store.search();
+  }
 
 }

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@ang
 import { JudgesStore } from '../../store/judges.store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { JudgeModel } from '../../models/judge.model';
+import { JudgeModel } from '../../../../core/models/judge.model';
 import { map } from 'rxjs';
 
 @Component({

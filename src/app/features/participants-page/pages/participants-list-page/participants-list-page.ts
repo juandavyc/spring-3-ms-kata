@@ -1,5 +1,5 @@
 import { CrudPageOption } from '@shared/ui/enums/crud-page-option.enum';
-import { ParticipantModel } from '../../models/participant.model';
+import { ParticipantModel } from '../../../../core/models/participant.model';
 import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, effect, inject, OnInit } from '@angular/core';
 import { ImportsModules } from '@shared/models/imports.module';
@@ -30,20 +30,13 @@ export default class ParticipantsListPage implements OnInit {
   readonly store = inject(ParticipantsStore);
   private readonly messageService = inject(MessageService);
 
-
   readonly CrudPageOption = CrudPageOption;
-
-  //isVisible = false;
-
 
   ngOnInit(): void {
     this.store.search();
   }
 
-
   closeDialog() {
-    //this.isVisible = false;
-    //this.store.setVisible(false);
     this.store.closeDialog();
   }
 

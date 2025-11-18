@@ -1,0 +1,41 @@
+<div class="flex flex-col gap-3">
+
+@let vm = store;
+
+@if (vm.isLoadingList()) {
+<p>Cargando</p>
+}
+@else {
+
+  <div class="flex flex-row justify-end">
+    <p-button
+    label="Crear Snapshot"
+    (onClick)="vm.create()"
+    [loading]="vm.isLoadingSnapshot()"
+    />
+  </div>
+
+  <p-table [value]="vm.rankings()" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template ng-template #header>
+      <tr>
+        <th>Posición</th>
+        <th>Participante</th>
+        <th>Puntuación Total</th>
+        <th>Aprobado</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-ranking let-i="rowIndex">
+      <tr>
+        <td>{{ i+1}}</td>
+        <td>{{ ranking.participantId }}</td>
+        <td>{{ ranking.finalScore }}</td>
+        <td>{{ ranking.approved }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+}
+<p-toast position="bottom-right"/>
+</div>
+
+

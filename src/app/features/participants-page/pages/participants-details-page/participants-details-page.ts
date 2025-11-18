@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@ang
 import { ParticipantsStore } from '../../store/participants.store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ParticipantModel } from '../../models/participant.model';
+import { ParticipantModel } from '../../../../core/models/participant.model';
 import { map } from 'rxjs';
 
 @Component({

@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 
 import { ResolveFn, Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
-import { JudgesService } from '../services/judges.service';
+import { JudgesService } from '../../../core/services/judges.service';
 
 
 export const judgeDetailsResolver: ResolveFn<any> = (route) => {
