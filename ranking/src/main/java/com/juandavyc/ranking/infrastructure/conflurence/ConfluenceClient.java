@@ -1,6 +1,8 @@
 package com.juandavyc.ranking.infrastructure.conflurence;
 
 import com.juandavyc.ranking.domain.port.ReportPublisherPort;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -13,15 +15,23 @@ import java.util.Base64;
 @Service
 public class ConfluenceClient implements ReportPublisherPort {
 
-    private final RestTemplate restTemplate = new RestTemplate();
+
+    private final RestTemplate restTemplate;
+    private final String confluenceToken;
+
+    public ConfluenceClient(
+            @Value("${app.confluence-token}") String confluenceToken
+    ) {
+        this.restTemplate = new RestTemplate();
+        this.confluenceToken = confluenceToken;
+    }
 
     @Override
     public void publish(String jsonReport) {
         try {
 
             String email = "juanda.yaracifuentes@gmail.com";
-            String apiToken = "ATATT3xFfGF0z5B7lkHeBukKiA52CXapTsEbLn0QL5ehpj5o6a7ZXf06lH4741kZMu9ET0B0cqxVkvFdiRys9iPzswmFVHCt-j7KMLNsx_0uJkfqZux0ZOcNjLFAT8i7P4hIoLXki7f0JooDL8m1jnZYaDmVX2SQ2PyivdozmBftPiCokDOYBMk=BA9FC577";
-            String auth = email + ":" + apiToken;
+            String auth = email + ":" + confluenceToken;
             String encodedAuth = Base64.getEncoder().encodeToString(auth.getBytes());
 
             HttpHeaders headers = new HttpHeaders();
