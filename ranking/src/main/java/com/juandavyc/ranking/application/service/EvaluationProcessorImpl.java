@@ -37,7 +37,6 @@ public class EvaluationProcessorImpl implements EvaluationUseCase {
 
         return new ParticipantRanking(
                 evaluation.getParticipantId(),
-                evaluation.getParticipantId() + "-name",
                 0,
                 evaluation.getTotalScore(),
                 false,

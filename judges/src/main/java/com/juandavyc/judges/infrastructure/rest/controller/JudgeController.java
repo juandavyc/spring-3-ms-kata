@@ -8,6 +8,7 @@ import com.juandavyc.judges.infrastructure.rest.mapper.JudgeWebMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/judges")
 @RequiredArgsConstructor
+@Validated
 public class JudgeController {
 
     private final JudgeService service;
@@ -24,6 +26,7 @@ public class JudgeController {
 
     @PostMapping
     public ResponseEntity<JudgeRestResponse> create(
+            @Validated(JudgeRestRequest.Create.class)
             @RequestBody JudgeRestRequest request
     ) {
         CreateJudgeCommand command = webMapper.toCommand(request);
@@ -77,6 +80,7 @@ public class JudgeController {
 
     @PutMapping("/{id}")
     public ResponseEntity<JudgeRestResponse> update(
+            @Validated(JudgeRestRequest.Update.class)
             @PathVariable UUID id,
             @RequestBody JudgeRestRequest request
     ) {

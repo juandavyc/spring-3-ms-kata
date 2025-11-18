@@ -22,7 +22,6 @@ public class ParticipantRankingEntity {
 
     @Id
     private UUID participantId;
-    private String participantName;
     private int totalEvaluations;
     private BigDecimal finalScore;
     private boolean approved;

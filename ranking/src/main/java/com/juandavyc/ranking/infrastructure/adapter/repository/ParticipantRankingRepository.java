@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ParticipantRankingRepository extends JpaRepository<ParticipantRankingEntity, UUID> {
-    List<ParticipantRankingEntity> findAllByOrderByFinalScoreDesc();
+    List<ParticipantRankingEntity> findTop3ByOrderByFinalScoreDesc();
 }

@@ -34,8 +34,10 @@ public class ParticipantRankingRepositoryAdapter implements ParticipantRankingRe
     }
 
     @Override
-    public List<ParticipantRanking> findAllByOrderByFinalScoreDesc() {
-        List<ParticipantRankingEntity> list = jpaRepository.findAllByOrderByFinalScoreDesc();
+    public List<ParticipantRanking> findTop3ByOrderByFinalScoreDesc() {
+        List<ParticipantRankingEntity> list = jpaRepository.findTop3ByOrderByFinalScoreDesc();
+
+
         return list.stream().map(persistenceMapper::toDomain).collect(Collectors.toList());
     }
 

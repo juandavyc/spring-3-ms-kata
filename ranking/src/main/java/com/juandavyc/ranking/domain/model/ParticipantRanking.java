@@ -8,7 +8,6 @@ import java.util.UUID;
 public class ParticipantRanking {
 
     private UUID participantId;
-    private String participantName;
     private int totalEvaluations;
     private BigDecimal finalScore;
     private boolean approved;
@@ -16,14 +15,12 @@ public class ParticipantRanking {
     private LocalDateTime lastUpdated;
 
     public ParticipantRanking(UUID participantId,
-                              String participantName,
                               int totalEvaluations,
                               BigDecimal finalScore,
                               boolean approved,
                               Integer rankPosition,
                               LocalDateTime lastUpdated) {
         this.participantId = participantId;
-        this.participantName = participantName;
         this.totalEvaluations = totalEvaluations;
         this.finalScore = finalScore;
         this.approved = approved;
@@ -56,13 +53,6 @@ public class ParticipantRanking {
         this.participantId = participantId;
     }
 
-    public String getParticipantName() {
-        return participantName;
-    }
-
-    public void setParticipantName(String participantName) {
-        this.participantName = participantName;
-    }
 
     public int getTotalEvaluations() {
         return totalEvaluations;

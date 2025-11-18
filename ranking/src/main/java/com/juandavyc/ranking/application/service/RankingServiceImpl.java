@@ -6,11 +6,13 @@ import com.juandavyc.ranking.application.dto.*;
 import com.juandavyc.ranking.application.mapper.ParticipantRankingApplicationMapper;
 import com.juandavyc.ranking.application.mapper.RankingSnapshotApplicationMapper;
 import com.juandavyc.ranking.application.usecases.RankingService;
+import com.juandavyc.ranking.domain.model.Participant;
 import com.juandavyc.ranking.domain.model.ParticipantRanking;
 import com.juandavyc.ranking.domain.model.RankingSnapshot;
 import com.juandavyc.ranking.domain.port.ParticipantRankingRepositoryPort;
 import com.juandavyc.ranking.domain.port.RankingSnapshotRepositoryPort;
 import com.juandavyc.ranking.domain.port.ReportPublisherPort;
+import com.juandavyc.ranking.domain.port.query.ParticipantQueryPort;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,26 +37,43 @@ public class RankingServiceImpl implements RankingService {
 
     private final ParticipantRankingApplicationMapper participantMapper;
     private final RankingSnapshotApplicationMapper snapshotMapper;
+
+    private final ParticipantQueryPort participantPort;
+
+
     private final ObjectMapper objectMapper;
 
     @Override
     public List<ParticipantRankingResponse> listAllParticipantRankings() {
-        List<ParticipantRanking> list = participantRepo.findAllByOrderByFinalScoreDesc();
-        return list.stream().map(participantMapper::toResponse).collect(Collectors.toList());
+        List<ParticipantRanking> rankingList = participantRepo.findTop3ByOrderByFinalScoreDesc();
+        return rankingList.stream().map(ranking -> {
+            Participant participant = participantPort.getById(ranking.getParticipantId());
+            ParticipantRankingResponse response = participantMapper.toParticipantRankingResponse(ranking);
+            response.setParticipant(participantMapper.toParticipantResponse(participant));
+            return response;
+        }).collect(Collectors.toList());
+
+
     }
 
     @Override
     public ParticipantRankingResponse getParticipantRanking(UUID participantId) {
+
         ParticipantRanking pr = participantRepo.findByParticipantId(participantId)
                 .orElseThrow(() -> new EntityNotFoundException(participantId.toString()));
-        return participantMapper.toResponse(pr);
+
+        Participant participant = participantPort.getById(pr.getParticipantId());
+
+        ParticipantRankingResponse response = participantMapper.toParticipantRankingResponse(pr);
+        response.setParticipant(participantMapper.toParticipantResponse(participant));
+        return response;
     }
 
 
     @Override
     public void createSnapshot(
     ) {
-        List<ParticipantRanking> participantRankings = participantRepo.findAllByOrderByFinalScoreDesc();
+        List<ParticipantRanking> participantRankings = participantRepo.findTop3ByOrderByFinalScoreDesc();
 
         int total = participantRankings.size();
 

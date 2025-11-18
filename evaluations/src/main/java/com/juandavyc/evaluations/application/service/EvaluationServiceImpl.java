@@ -43,6 +43,7 @@ public class EvaluationServiceImpl implements EvaluationUseCase {
     public EvaluationResponse createEvaluation(CreateEvaluationCommand command) {
 
 
+
         if (!participantPort.existsById(command.participantId())) {
             throw new IllegalArgumentException("Participant not found");
         }
@@ -57,6 +58,8 @@ public class EvaluationServiceImpl implements EvaluationUseCase {
         Evaluation saved = repositoryPort.save(evaluation);
 
         eventPublisherPort.publishEvaluationCreated(saved);
+
+
 
         return mapper.toEvaluationResponse(saved);
     }

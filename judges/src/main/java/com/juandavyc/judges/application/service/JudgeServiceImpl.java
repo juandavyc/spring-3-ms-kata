@@ -3,6 +3,7 @@ package com.juandavyc.judges.application.service;
 import com.juandavyc.judges.application.dto.CreateJudgeCommand;
 import com.juandavyc.judges.application.dto.JudgeResponse;
 import com.juandavyc.judges.application.dto.UpdateJudgeCommand;
+import com.juandavyc.judges.application.exceptions.ResourceAlreadyExistsException;
 import com.juandavyc.judges.application.mapper.JudgeApplicationMapper;
 import com.juandavyc.judges.application.mapper.JudgeApplicationUpdateMapper;
 import com.juandavyc.judges.application.usecases.JudgeService;
@@ -28,7 +29,13 @@ public class JudgeServiceImpl implements JudgeService {
     @Override
     public JudgeResponse create(CreateJudgeCommand command) {
         Judge judge = mapper.toJudge(command);
+
+        if (repositoryPort.existsByEmail(command.getEmail())) {
+            throw new ResourceAlreadyExistsException("Email", command.getEmail());
+        }
+
         judge.setCreatedAt(LocalDateTime.now());
+
         Judge saved = repositoryPort.save(judge);
         return mapper.toJudgeResponse(saved);
     }
