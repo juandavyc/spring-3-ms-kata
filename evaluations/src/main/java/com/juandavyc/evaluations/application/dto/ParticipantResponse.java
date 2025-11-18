@@ -1,8 +1,7 @@
-package com.juandavyc.participants.application.dto;
+package com.juandavyc.evaluations.application.dto;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -12,11 +11,8 @@ import java.util.UUID;
 @ToString
 
 public class ParticipantResponse {
-
     private UUID id;
     private String name;
-    private String email;
     private String jobRole;
-    private LocalDateTime createdAt;
-
+    private String email;
 }

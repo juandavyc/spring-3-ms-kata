@@ -12,7 +12,7 @@ public interface ParticipantRankingRepositoryPort {
 
     Optional<ParticipantRanking> findByParticipantId(UUID participantId);
 
-    List<ParticipantRanking> findAll();
+    List<ParticipantRanking> findAllByOrderByFinalScoreDesc();
 
     void deleteByParticipantId(UUID participantId);
 

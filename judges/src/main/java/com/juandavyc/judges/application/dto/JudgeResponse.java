@@ -2,6 +2,7 @@ package com.juandavyc.judges.application.dto;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -15,5 +16,5 @@ public class JudgeResponse {
     private String name;
     private String email;
     private String specialization;
-
+    private LocalDateTime createdAt;
 }

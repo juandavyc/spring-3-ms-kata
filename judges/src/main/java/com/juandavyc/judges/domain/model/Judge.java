@@ -19,7 +19,7 @@ public class Judge {
         this.name = name;
         this.email = email;
         this.specialization = specialization;
-        this.createdAt = createdAt;
+        this.createdAt = LocalDateTime.now();
     }
 
     public UUID getId() {

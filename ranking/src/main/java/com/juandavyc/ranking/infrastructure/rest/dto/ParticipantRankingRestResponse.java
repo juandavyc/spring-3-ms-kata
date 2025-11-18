@@ -12,13 +12,7 @@ import java.util.UUID;
 @Setter
 @ToString
 public class ParticipantRankingRestResponse {
-
     private UUID participantId;
-    private String participantName;
-    private int totalEvaluations;
     private BigDecimal finalScore;
     private boolean approved;
-    private Integer rankPosition;
-    private LocalDateTime lastUpdated;
-
 }

@@ -8,20 +8,18 @@ public class Participant {
     private UUID id;
     private String name;
     private String email;
-    private String status;
+    private String jobRole;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
     public Participant() {
     }
 
-    public Participant(UUID id, String name, String email, String status, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Participant(UUID id, String name, String email, String jobRole, LocalDateTime createdAt) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.status = status;
+        this.jobRole = jobRole;
         this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public UUID getId() {
@@ -48,12 +46,12 @@ public class Participant {
         this.email = email;
     }
 
-    public String getStatus() {
-        return status;
+    public String getJobRole() {
+        return jobRole;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setJobRole(String jobRole) {
+        this.jobRole = jobRole;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -62,26 +60,5 @@ public class Participant {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Participant{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", status='" + status + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
     }
 }

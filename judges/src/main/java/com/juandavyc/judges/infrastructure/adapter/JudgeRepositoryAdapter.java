@@ -39,8 +39,13 @@ public class JudgeRepositoryAdapter implements JudgeRepositoryPort {
     }
 
     @Override
-    public List<Judge> findAll() {
-        List<JudgeEntity> entities = jpaRepository.findAll();
+    public boolean existsByEmail(String email) {
+        return jpaRepository.existsByEmail(email);
+    }
+
+    @Override
+    public List<Judge> findAllByOrderByCreatedAtDesc() {
+        List<JudgeEntity> entities = jpaRepository.findAllByOrderByCreatedAtDesc();
         return entities.stream()
                 .map(persistenceMapper::toDomain)
                 .collect(Collectors.toList());

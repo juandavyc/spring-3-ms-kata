@@ -10,6 +10,7 @@ import com.juandavyc.ranking.domain.model.ParticipantRanking;
 import com.juandavyc.ranking.domain.model.RankingSnapshot;
 import com.juandavyc.ranking.domain.port.ParticipantRankingRepositoryPort;
 import com.juandavyc.ranking.domain.port.RankingSnapshotRepositoryPort;
+import com.juandavyc.ranking.domain.port.ReportPublisherPort;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,13 +31,15 @@ public class RankingServiceImpl implements RankingService {
     private final ParticipantRankingRepositoryPort participantRepo;
     private final RankingSnapshotRepositoryPort snapshotRepo;
 
+    private final ReportPublisherPort reportPublisherPort;
+
     private final ParticipantRankingApplicationMapper participantMapper;
     private final RankingSnapshotApplicationMapper snapshotMapper;
     private final ObjectMapper objectMapper;
 
     @Override
     public List<ParticipantRankingResponse> listAllParticipantRankings() {
-        List<ParticipantRanking> list = participantRepo.findAll();
+        List<ParticipantRanking> list = participantRepo.findAllByOrderByFinalScoreDesc();
         return list.stream().map(participantMapper::toResponse).collect(Collectors.toList());
     }
 
@@ -47,56 +50,27 @@ public class RankingServiceImpl implements RankingService {
         return participantMapper.toResponse(pr);
     }
 
-    @Override
-    public ParticipantRankingResponse updateParticipantRanking(UUID participantId, ParticipantRankingResponse update) {
-        ParticipantRanking existing = participantRepo.findByParticipantId(participantId)
-                .orElseThrow(() -> new EntityNotFoundException(participantId.toString()));
-        // simple update behaviour: update score and rank if present
-        if (update.getFinalScore() != null) {
-            existing.updateScore(update.getFinalScore());
-        }
-        if (update.getRankPosition() != null) {
-            existing.updateRankingPosition(update.getRankPosition());
-        }
-        if (update.getTotalEvaluations() > 0) {
-            update.setTotalEvaluations(update.getTotalEvaluations() + 1);
-        }
-        ParticipantRanking saved = participantRepo.save(existing);
-        return participantMapper.toResponse(saved);
-    }
 
     @Override
-    public RankingSnapshotResponse createSnapshot(
+    public void createSnapshot(
     ) {
-        List<ParticipantRanking> participantRankings = participantRepo.findAll();
-//
-        // 1. Ordenar por puntaje DESC
-        List<ParticipantRanking> top = participantRankings.stream()
-                .sorted(Comparator.comparing(ParticipantRanking::getFinalScore).reversed())
-                .toList();
-//
-        // 2. Asignar rankPosition
-        AtomicInteger position = new AtomicInteger(1);
-        top.forEach(p -> p.setRankPosition(position.getAndIncrement()));
-//
-        // 3. Calcular total
+        List<ParticipantRanking> participantRankings = participantRepo.findAllByOrderByFinalScoreDesc();
+
         int total = participantRankings.size();
-//
-        // 4. Calcular promedio
+
         BigDecimal average = participantRankings.stream()
                 .map(ParticipantRanking::getFinalScore)
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
                 .divide(BigDecimal.valueOf(total), RoundingMode.HALF_UP);
-//
-        // 5. Pasar a JSON
+
         String jsonTop;
         try {
-            jsonTop = objectMapper.writeValueAsString(top);
+            jsonTop = objectMapper.writeValueAsString(participantRankings);
+            reportPublisherPort.publish(jsonTop);
         } catch (JsonProcessingException e) {
-            jsonTop = "[]"; // Mejor: array vacío, no "{}"
+            jsonTop = "[]";
         }
-//
-        // 6. Crear snapshot (TODAVÍA EN DOMAIN)
+
         RankingSnapshot snapshot = new RankingSnapshot(
                 null,
                 LocalDateTime.now(),
@@ -104,12 +78,8 @@ public class RankingServiceImpl implements RankingService {
                 total,
                 average
         );
-//
-        // 7. Guardar en repository (si quieres)
-        RankingSnapshot saved = snapshotRepo.save(snapshot);
-//
-        // 8. Devolver response
-        return snapshotMapper.toResponse(saved);
+
+        snapshotRepo.save(snapshot);
 
     }
 

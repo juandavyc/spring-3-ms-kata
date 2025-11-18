@@ -28,6 +28,5 @@ public class JudgeEntity {
     private String email;
     private String specialization;
     private LocalDateTime createdAt;
-    //private LocalDateTime updatedAt;
 
 }

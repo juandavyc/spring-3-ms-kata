@@ -17,4 +17,6 @@ public class ParticipantRestRequest {
     private String name;
     //@Email @NotBlank
     private String email;
+
+    private String jobRole;
 }

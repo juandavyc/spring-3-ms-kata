@@ -28,7 +28,6 @@ public class ParticipantController {
     public ResponseEntity<ParticipantRestResponse> create(
             @RequestBody ParticipantRestRequest request
     ) {
-
         CreateParticipantCommand command = webMapper.toCommand(request);
         ParticipantResponse response = service.create(command);
 
@@ -53,20 +52,38 @@ public class ParticipantController {
             @PathVariable UUID id
     ) {
         ParticipantResponse response = service.getById(id);
-
         ParticipantRestResponse responseDto = webMapper.toResponseDto(response);
-
         return ResponseEntity.status(HttpStatus.OK)
                 .body(responseDto);
     }
 
-    @GetMapping("/{id}/exists")
-    public ResponseEntity<Boolean> exists(@PathVariable UUID id) {
+    @GetMapping("/id/{id}/exists")
+    public ResponseEntity<Boolean> exists(
+            @PathVariable UUID id
+    ) {
         boolean exists =  service.existsById(id);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(exists);
     }
 
+    @GetMapping("/email/{email}/exists")
+    public ResponseEntity<Boolean> exists(
+            @PathVariable String email
+    ) {
+        boolean exists =  service.existsByEmail(email);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(exists);
+    }
+//    @GetMapping("/exists")
+//    public ResponseEntity<Boolean> exists(
+//            @RequestParam(required = false) UUID id,
+//            @RequestParam(required = false) String email) {
+//
+//        if (id != null) return ResponseEntity.ok(service.existsById(id));
+//        if (email != null) return ResponseEntity.ok(service.existsByEmail(email));
+//
+//        return ResponseEntity.badRequest().build();
+//    }
     @PutMapping("/{id}")
     public ResponseEntity<ParticipantRestResponse> update(
             @PathVariable UUID id,
@@ -88,8 +105,5 @@ public class ParticipantController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
-
-
-
 
 }

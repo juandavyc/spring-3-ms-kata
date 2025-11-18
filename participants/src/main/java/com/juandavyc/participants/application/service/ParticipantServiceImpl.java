@@ -12,6 +12,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -27,6 +28,7 @@ public class ParticipantServiceImpl implements ParticipantService {
     @Override
     public ParticipantResponse create(CreateParticipantCommand command) {
         Participant participant = mapper.toParticipant(command);
+        participant.setCreatedAt(LocalDateTime.now());
         Participant saved = repository.save(participant);
         return mapper.toParticipantResponse(saved);
     }
@@ -49,6 +51,11 @@ public class ParticipantServiceImpl implements ParticipantService {
     @Override
     public boolean existsById(UUID id) {
         return repository.existsById(id);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return repository.existsByEmail(email);
     }
 
     @Override

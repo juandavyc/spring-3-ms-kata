@@ -15,8 +15,7 @@ public class ParticipantRestResponse {
     private UUID id;
     private String name;
     private String email;
-    private String status;
+    private String jobRole;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
 }

@@ -8,7 +8,9 @@ import com.juandavyc.evaluations.infrastructure.feign.mapper.ParticipantWebMappe
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -21,6 +23,15 @@ public class ParticipantQueryAdapter implements ParticipantQueryPort {
     public Participant getById(UUID id) {
         ParticipantRestResponse response = feignClient.getById(id);
         return mapper.toDomain(response);
+    }
+
+    @Override
+    public List<Participant> getAll() {
+        List<ParticipantRestResponse> response = feignClient.getAll();
+
+        return response.stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());
     }
 
     @Override

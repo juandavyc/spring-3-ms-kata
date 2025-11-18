@@ -24,8 +24,6 @@ public class EvaluationServiceAdapter implements EvaluationServicePort {
     @Override
     public Evaluation save(Evaluation domain) {
 
-
-
         EvaluationEntity entity = persistenceMapper.toEntity(domain);
         EvaluationEntity saved = jpaRepository.save(entity);
         return persistenceMapper.toDomain(saved);
@@ -36,6 +34,13 @@ public class EvaluationServiceAdapter implements EvaluationServicePort {
         return jpaRepository.findById(id)
                 .map(persistenceMapper::toDomain);
     }
+
+    public Evaluation findLastEvaluationByParticipantId(UUID participantId) {
+        return jpaRepository.findFirstByParticipantIdOrderByEvaluationDateDesc(participantId)
+                .map(persistenceMapper::toDomain)
+                .orElse(null);
+    }
+
 
     @Override
     public List<Evaluation> findAll() {

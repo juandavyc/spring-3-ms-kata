@@ -12,6 +12,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -27,13 +28,14 @@ public class JudgeServiceImpl implements JudgeService {
     @Override
     public JudgeResponse create(CreateJudgeCommand command) {
         Judge judge = mapper.toJudge(command);
+        judge.setCreatedAt(LocalDateTime.now());
         Judge saved = repositoryPort.save(judge);
         return mapper.toJudgeResponse(saved);
     }
 
     @Override
     public List<JudgeResponse> getALl() {
-        List<Judge> judges = repositoryPort.findAll();
+        List<Judge> judges = repositoryPort.findAllByOrderByCreatedAtDesc();
         return judges.stream()
                 .map(mapper::toJudgeResponse)
                 .collect(Collectors.toList());
@@ -49,6 +51,11 @@ public class JudgeServiceImpl implements JudgeService {
     @Override
     public boolean existsById(UUID id) {
         return repositoryPort.existsById(id);
+    }
+
+    @Override
+    public boolean existsByEmail(String email) {
+        return repositoryPort.existsByEmail(email);
     }
 
     @Override

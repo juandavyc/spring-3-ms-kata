@@ -2,10 +2,12 @@ package com.juandavyc.evaluations.infrastructure.rest.controller;
 
 import com.juandavyc.evaluations.application.dto.CreateEvaluationCommand;
 import com.juandavyc.evaluations.application.dto.EvaluationResponse;
+import com.juandavyc.evaluations.application.dto.ParticipantLastEvaluationResponse;
 import com.juandavyc.evaluations.application.dto.UpdateEvaluationCommand;
 import com.juandavyc.evaluations.application.usecases.EvaluationUseCase;
 import com.juandavyc.evaluations.infrastructure.rest.dto.EvaluationRestRequest;
 import com.juandavyc.evaluations.infrastructure.rest.dto.EvaluationRestResponse;
+import com.juandavyc.evaluations.infrastructure.rest.dto.ParticipantLastEvaluationRestResponse;
 import com.juandavyc.evaluations.infrastructure.rest.mapper.EvaluationWebMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,6 +34,15 @@ public class EvaluationController {
         EvaluationResponse response = evaluationService.createEvaluation(command);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(webMapper.toRestResponse(response));
+    }
+
+    @GetMapping("/latest-by-participant")
+    public ResponseEntity<List<ParticipantLastEvaluationRestResponse>> getLatestEvaluations() {
+        List<ParticipantLastEvaluationResponse> responses = evaluationService.getLatestEvaluations();
+        List<ParticipantLastEvaluationRestResponse> restResponses = responses.stream()
+                .map(webMapper::toParticipantLastEvaluationRestResponse)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(restResponses);
     }
 
     @GetMapping
@@ -62,7 +73,9 @@ public class EvaluationController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteEvaluation(@PathVariable UUID id) {
+    public ResponseEntity<Void> deleteEvaluation(
+            @PathVariable UUID id
+    ) {
         evaluationService.deleteEvaluation(id);
         return ResponseEntity.noContent().build();
     }

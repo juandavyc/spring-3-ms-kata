@@ -16,6 +16,7 @@ public interface ParticipantService {
     List<ParticipantResponse> getAll();
     ParticipantResponse getById(UUID id);
     boolean existsById(UUID id);
+    boolean existsByEmail(String email);
     ParticipantResponse update(UUID id, UpdateParticipantCommand command);
     void delete(UUID id);
 

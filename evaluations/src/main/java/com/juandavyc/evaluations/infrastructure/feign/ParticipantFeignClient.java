@@ -6,15 +6,19 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
 import java.util.UUID;
 
 @FeignClient(name = "participants")
 public interface ParticipantFeignClient {
 
-    @GetMapping("/participants/{id}")
+    @GetMapping("/participants/id/{id}")
     ParticipantRestResponse getById(@PathVariable("id") UUID id);
 
-    @GetMapping("/participants/{id}/exists")
+    @GetMapping("/participants")
+    List<ParticipantRestResponse> getAll();
+
+    @GetMapping("/participants/id/{id}/exists")
     boolean existsById(@PathVariable("id") UUID id);
 
 }

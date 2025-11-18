@@ -15,6 +15,8 @@ public interface ParticipantRepositoryPort {
 
     boolean existsById(UUID id);
 
+    boolean existsByEmail(String email);
+
     List<Participant> findAll();
 
     void deleteById(UUID id);

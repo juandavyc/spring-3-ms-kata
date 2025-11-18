@@ -39,8 +39,13 @@ public class ParticipantRepositoryAdapter implements ParticipantRepositoryPort {
     }
 
     @Override
+    public boolean existsByEmail(String email) {
+        return jpaRepository.existsByEmail(email);
+    }
+
+    @Override
     public List<Participant> findAll() {
-        List<ParticipantEntity> entities = jpaRepository.findAll();
+        List<ParticipantEntity> entities = jpaRepository.findAllByOrderByCreatedAtDesc();
         return entities.stream()
                 .map(persistenceMapper::toDomain)
                 .collect(Collectors.toList());

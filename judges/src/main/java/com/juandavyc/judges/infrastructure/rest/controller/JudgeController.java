@@ -56,11 +56,21 @@ public class JudgeController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(responseDto);
     }
-    @GetMapping("/{id}/exists")
-    public ResponseEntity<Boolean> existsById(
+
+    @GetMapping("/id/{id}/exists")
+    public ResponseEntity<Boolean> exists(
             @PathVariable UUID id
     ) {
-        boolean exists = service.existsById(id);
+        boolean exists =  service.existsById(id);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(exists);
+    }
+
+    @GetMapping("/email/{email}/exists")
+    public ResponseEntity<Boolean> exists(
+            @PathVariable String email
+    ) {
+        boolean exists =  service.existsByEmail(email);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(exists);
     }

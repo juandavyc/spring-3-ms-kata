@@ -43,13 +43,11 @@ public class RankingController {
     }
 
     @PostMapping("/snapshot")
-    public ResponseEntity<RankingSnapshotRestResponse> createSnapshot(
+    public ResponseEntity<Void> createSnapshot(
            // @RequestBody CreateSnapshotCommand command
     ) {
-        RankingSnapshotResponse response = service.createSnapshot();
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(snapshotMapper.toRest(response));
+        service.createSnapshot();
+        return ResponseEntity.accepted().build();
     }
 
 }

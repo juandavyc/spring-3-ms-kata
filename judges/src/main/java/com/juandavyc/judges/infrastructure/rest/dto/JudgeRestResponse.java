@@ -14,6 +14,7 @@ public class JudgeRestResponse {
 
     private UUID id;
     private String name;
+    private String email;
     private String specialization;
     private LocalDateTime createdAt;
 

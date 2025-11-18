@@ -13,7 +13,7 @@ public interface JudgeFeignClient {
     @GetMapping("/judges/{id}")
     JudgeRestResponse getById(@PathVariable("id") UUID id);
 
-    @GetMapping("/judges/{id}/exists")
+    @GetMapping("/judges/id/{id}/exists")
     boolean existsById(@PathVariable("id") UUID id);
 
 }

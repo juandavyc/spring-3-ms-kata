@@ -11,9 +11,7 @@ public interface RankingService {
 
     ParticipantRankingResponse getParticipantRanking(UUID participantId);
 
-    ParticipantRankingResponse updateParticipantRanking(UUID participantId, ParticipantRankingResponse update);
-
-    RankingSnapshotResponse createSnapshot();
+    void createSnapshot();
 
     List<RankingSnapshotResponse> getAllSnapshots();
 

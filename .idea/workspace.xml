@@ -5,46 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="886498f0-4f15-4132-bad3-aff194f31dba" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/dto/EvaluationCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/mapper/EvaluationApplicationMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/service/EvaluationProcessorImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/usecases/EvaluationUseCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/domain/model/Evaluation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/kafka/consumer/EvaluationCreatedConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/kafka/dto/EvaluationEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/kafka/mapper/EvaluationMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/rest/dto/RankingSnapshotRestRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/application/dto/ParticipantLastEvaluationResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/application/dto/ParticipantResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/rest/dto/ParticipantLastEvaluationRestResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/rest/dto/ParticipantRestResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/domain/port/ReportPublisherPort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/conflurence/ConfluenceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/application/mapper/EvaluationApplicationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/application/mapper/EvaluationApplicationMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/application/service/EvaluationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/application/service/EvaluationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/Evaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/Evaluation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/feign/Judge.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/Judge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/feign/Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/Participant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/port/feign/query/JudgeQueryPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/port/query/JudgeQueryPort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/port/feign/query/ParticipantQueryPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/port/query/ParticipantQueryPort.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/adapter/feign/query/JudgeQueryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/adapter/feign/query/JudgeQueryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/application/usecases/EvaluationUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/application/usecases/EvaluationUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/model/Participant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/port/query/ParticipantQueryPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/port/query/ParticipantQueryPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/port/service/EvaluationServicePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/domain/port/service/EvaluationServicePort.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/adapter/feign/query/ParticipantQueryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/adapter/feign/query/ParticipantQueryAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/feign/mapper/JudgeWebMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/feign/mapper/JudgeWebMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/feign/mapper/ParticipantWebMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/feign/mapper/ParticipantWebMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/adapter/repository/EvaluationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/adapter/repository/EvaluationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/adapter/service/EvaluationServiceAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/adapter/service/EvaluationServiceAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/feign/JudgeFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/feign/JudgeFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/feign/ParticipantFeignClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/feign/ParticipantFeignClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/rest/controller/EvaluationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/rest/controller/EvaluationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/rest/mapper/EvaluationWebMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/infrastructure/rest/mapper/EvaluationWebMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/application/dto/JudgeResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/application/dto/JudgeResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/application/service/JudgeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/application/service/JudgeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/application/usecases/JudgeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/application/usecases/JudgeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/domain/model/Judge.java" beforeDir="false" afterPath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/domain/model/Judge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/domain/port/JudgeRepositoryPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/domain/port/JudgeRepositoryPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/infrastructure/adapter/JudgeRepositoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/infrastructure/adapter/JudgeRepositoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/infrastructure/adapter/entity/JudgeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/infrastructure/adapter/entity/JudgeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/infrastructure/adapter/repository/JudgeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/infrastructure/adapter/repository/JudgeRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/infrastructure/rest/controller/JudgeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/infrastructure/rest/controller/JudgeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/infrastructure/rest/dto/JudgeRestResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/judges/src/main/java/com/juandavyc/judges/infrastructure/rest/dto/JudgeRestResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/application/dto/CreateParticipantCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/application/dto/CreateParticipantCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/application/dto/ParticipantResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/application/dto/ParticipantResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/application/dto/UpdateParticipantCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/application/dto/UpdateParticipantCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/application/mapper/ParticipantApplicationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/application/mapper/ParticipantApplicationMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/application/service/ParticipantServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/application/service/ParticipantServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/application/usecases/ParticipantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/application/usecases/ParticipantService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/domain/model/Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/domain/model/Participant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/domain/port/ParticipantRepositoryPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/domain/port/ParticipantRepositoryPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/adapter/ParticipantRepositoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/adapter/ParticipantRepositoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/adapter/entity/ParticipantEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/adapter/entity/ParticipantEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/adapter/repository/ParticipantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/adapter/repository/ParticipantRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/rest/controller/ParticipantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/rest/controller/ParticipantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/participants/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ranking/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/consumer/EvaluationCreatedConsumer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/rest/dto/ParticipantRestRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/rest/dto/ParticipantRestRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/rest/dto/ParticipantRestResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/participants/src/main/java/com/juandavyc/participants/infrastructure/rest/dto/ParticipantRestResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/dto/ParticipantRankingResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/dto/ParticipantRankingResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/service/RankingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/service/RankingServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/usecases/RankingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/application/usecases/RankingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/domain/model/ParticipantRanking.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/domain/model/ParticipantRanking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/domain/model/kafka/Evaluation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/domain/service/EvaluationProcessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/adapter/EvaluationProcessorAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/adapter/entity/RankingSnapshotEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/adapter/entity/RankingSnapshotEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/config/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/kafka/config/KafkaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/domain/port/ParticipantRankingRepositoryPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/domain/port/ParticipantRankingRepositoryPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/adapter/ParticipantRankingRepositoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/adapter/ParticipantRankingRepositoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/adapter/repository/ParticipantRankingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/adapter/repository/ParticipantRankingRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/rest/controller/RankingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/rest/controller/RankingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ranking/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/rest/dto/ParticipantRankingRestResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/src/main/java/com/juandavyc/ranking/infrastructure/rest/dto/ParticipantRankingRestResponse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +68,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -70,42 +84,51 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="35ZVy9oxVS0A8kXAFATAuUyR6FT" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found": "Database connection parameters found",
-    "Notification.DoNotAsk-DatabaseConfigFileWatcher.found": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.ConfigserverApplication.executor": "Run",
-    "Spring Boot.EurekaserverApplication.executor": "Run",
-    "Spring Boot.EvaluationsApplication.executor": "Run",
-    "Spring Boot.GatewayserverApplication.executor": "Run",
-    "Spring Boot.JudgesApplication.executor": "Run",
-    "Spring Boot.ParticipantsApplication.executor": "Run",
-    "Spring Boot.RankingApplication.executor": "Run",
-    "git-widget-placeholder": "dev",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;Database connection parameters found&quot;,
+    &quot;Notification.DoNotAsk-DatabaseConfigFileWatcher.found&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ConfigserverApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EurekaserverApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EvaluationsApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayserverApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.JudgesApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ParticipantsApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.RankingApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/juan/Escritorio/interviews/kata/backend/evaluations/src/main/java/com/juandavyc/evaluations/application/dto&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/evaluations/src/main/java/com/juandavyc/evaluations/application/dto" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -195,7 +218,10 @@
       <option name="presentableId" value="Default" />
       <updated>1763317834800</updated>
       <workItem from="1763317837947" duration="219000" />
-      <workItem from="1763318090687" duration="5833000" />
+      <workItem from="1763318090687" duration="16720000" />
+      <workItem from="1763400073594" duration="3204000" />
+      <workItem from="1763407567883" duration="10072000" />
+      <workItem from="1763431958455" duration="8641000" />
     </task>
     <servers />
   </component>

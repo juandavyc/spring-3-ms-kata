@@ -14,7 +14,9 @@ public interface JudgeRepositoryPort {
 
     boolean existsById(UUID id);
 
-    List<Judge> findAll();
+    boolean existsByEmail(String email);
+
+    List<Judge> findAllByOrderByCreatedAtDesc();
 
     void deleteById(UUID id);
 }

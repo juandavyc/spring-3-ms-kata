@@ -10,6 +10,7 @@ public interface EvaluationServicePort {
 
     Evaluation save(Evaluation evaluation);
     Optional<Evaluation> findById(UUID id);
+    Evaluation findLastEvaluationByParticipantId(UUID participantId);
     List<Evaluation> findAll();
     void delete(UUID id);
 

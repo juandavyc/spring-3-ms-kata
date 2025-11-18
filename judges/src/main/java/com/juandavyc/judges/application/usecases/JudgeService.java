@@ -10,7 +10,10 @@ public interface JudgeService {
     JudgeResponse create(CreateJudgeCommand command);
     List<JudgeResponse> getALl();
     JudgeResponse getById(UUID id);
+
     boolean existsById(UUID id);
+    boolean existsByEmail(String email);
+
     JudgeResponse update(UUID id, UpdateJudgeCommand command);
     void delete(UUID id);
 

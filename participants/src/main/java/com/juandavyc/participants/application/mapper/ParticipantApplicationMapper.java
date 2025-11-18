@@ -11,7 +11,6 @@ public interface ParticipantApplicationMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "updatedAt", ignore = true)
     Participant toParticipant(CreateParticipantCommand command);
 
     ParticipantResponse toParticipantResponse(Participant participant);
